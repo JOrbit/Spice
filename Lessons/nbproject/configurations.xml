@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="97">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <logicalFolder name="data" displayName="data" projectFiles="true">
+        <logicalFolder name="binary_pck" displayName="binary_pck" projectFiles="true">
+          <logicalFolder name="kernels" displayName="kernels" projectFiles="true">
+            <logicalFolder name="fk" displayName="fk" projectFiles="true">
+              <itemPath>data/binary_pck/kernels/fk/earth_assoc_itrf93.tf</itemPath>
+              <itemPath>data/binary_pck/kernels/fk/earth_topo_050714.tf</itemPath>
+              <itemPath>data/binary_pck/kernels/fk/moon_060721.tf</itemPath>
+              <itemPath>data/binary_pck/kernels/fk/moon_assoc_me.tf</itemPath>
+              <itemPath>data/binary_pck/kernels/fk/moon_assoc_pa.tf</itemPath>
+            </logicalFolder>
+            <logicalFolder name="lsk" displayName="lsk" projectFiles="true">
+              <itemPath>data/binary_pck/kernels/lsk/naif0008.tls</itemPath>
+            </logicalFolder>
+            <logicalFolder name="pck" displayName="pck" projectFiles="true">
+              <itemPath>data/binary_pck/kernels/pck/earth_000101_070725_070503.bpc</itemPath>
+              <itemPath>data/binary_pck/kernels/pck/moon_pa_de403_1950-2198.bpc</itemPath>
+              <itemPath>data/binary_pck/kernels/pck/pck00008.tpc</itemPath>
+            </logicalFolder>
+            <logicalFolder name="spk" displayName="spk" projectFiles="true">
+              <itemPath>data/binary_pck/kernels/spk/de414_2000_2020.bsp</itemPath>
+              <itemPath>data/binary_pck/kernels/spk/earthstns_itrf93_050714.bsp</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <itemPath>data/binary_pck/binary_pck_c.txt</itemPath>
+          <itemPath>data/binary_pck/binary_pck_diagram.pdf</itemPath>
+          <itemPath>data/binary_pck/mrotat.tm</itemPath>
+        </logicalFolder>
+        <logicalFolder name="event_finding"
+                       displayName="event_finding"
+                       projectFiles="true">
+          <logicalFolder name="kernels" displayName="kernels" projectFiles="true">
+            <logicalFolder name="dsk" displayName="dsk" projectFiles="true">
+              <itemPath>data/event_finding/kernels/dsk/mars_lowres.bds</itemPath>
+            </logicalFolder>
+            <logicalFolder name="fk" displayName="fk" projectFiles="true">
+              <itemPath>data/event_finding/kernels/fk/earth_topo_050714.tf</itemPath>
+            </logicalFolder>
+            <logicalFolder name="lsk" displayName="lsk" projectFiles="true">
+              <itemPath>data/event_finding/kernels/lsk/naif0008.tls</itemPath>
+            </logicalFolder>
+            <logicalFolder name="pck" displayName="pck" projectFiles="true">
+              <itemPath>data/event_finding/kernels/pck/earth_000101_060525_060303.bpc</itemPath>
+              <itemPath>data/event_finding/kernels/pck/pck00008.tpc</itemPath>
+            </logicalFolder>
+            <logicalFolder name="spk" displayName="spk" projectFiles="true">
+              <itemPath>data/event_finding/kernels/spk/ORMM__040501000000_00076XS.BSP</itemPath>
+              <itemPath>data/event_finding/kernels/spk/de405xs.bsp</itemPath>
+              <itemPath>data/event_finding/kernels/spk/earthstns_itrf93_050714.bsp</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <itemPath>data/event_finding/viewpr.tm</itemPath>
+        </logicalFolder>
+        <logicalFolder name="insitu_sensing"
+                       displayName="insitu_sensing"
+                       projectFiles="true">
+          <logicalFolder name="kernels" displayName="kernels" projectFiles="true">
+            <logicalFolder name="ck" displayName="ck" projectFiles="true">
+              <itemPath>data/insitu_sensing/kernels/ck/04135_04171pc_psiv2.bc</itemPath>
+            </logicalFolder>
+            <logicalFolder name="fk" displayName="fk" projectFiles="true">
+              <itemPath>data/insitu_sensing/kernels/fk/cas_v37.tf</itemPath>
+            </logicalFolder>
+            <logicalFolder name="ik" displayName="ik" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="lsk" displayName="lsk" projectFiles="true">
+              <itemPath>data/insitu_sensing/kernels/lsk/naif0008.tls</itemPath>
+            </logicalFolder>
+            <logicalFolder name="pck" displayName="pck" projectFiles="true">
+              <itemPath>data/insitu_sensing/kernels/pck/cpck05Mar2004.tpc</itemPath>
+            </logicalFolder>
+            <logicalFolder name="sclk" displayName="sclk" projectFiles="true">
+              <itemPath>data/insitu_sensing/kernels/sclk/cas00084.tsc</itemPath>
+            </logicalFolder>
+            <logicalFolder name="spk" displayName="spk" projectFiles="true">
+              <itemPath>data/insitu_sensing/kernels/spk/020514_SE_SAT105.bsp</itemPath>
+              <itemPath>data/insitu_sensing/kernels/spk/030201AP_SK_SM546_T45.bsp</itemPath>
+              <itemPath>data/insitu_sensing/kernels/spk/981005_PLTEPH-DE405S.bsp</itemPath>
+              <itemPath>data/insitu_sensing/kernels/spk/sat128.bsp</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <itemPath>data/insitu_sensing/convrt.tm</itemPath>
+          <itemPath>data/insitu_sensing/getsta.tm</itemPath>
+          <itemPath>data/insitu_sensing/sclket.tm</itemPath>
+          <itemPath>data/insitu_sensing/scvel.tm</itemPath>
+          <itemPath>data/insitu_sensing/soldir.tm</itemPath>
+          <itemPath>data/insitu_sensing/sscpnt.tm</itemPath>
+        </logicalFolder>
+        <logicalFolder name="other_stuff" displayName="other_stuff" projectFiles="true">
+          <logicalFolder name="kernels" displayName="kernels" projectFiles="true">
+            <logicalFolder name="ck" displayName="ck" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="fk" displayName="fk" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="ik" displayName="ik" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="lsk" displayName="lsk" projectFiles="true">
+              <itemPath>data/other_stuff/kernels/lsk/naif0008.tls</itemPath>
+            </logicalFolder>
+            <logicalFolder name="pck" displayName="pck" projectFiles="true">
+              <itemPath>data/other_stuff/kernels/pck/pck00008.tpc</itemPath>
+            </logicalFolder>
+            <logicalFolder name="sclk" displayName="sclk" projectFiles="true">
+            </logicalFolder>
+            <logicalFolder name="spk" displayName="spk" projectFiles="true">
+              <itemPath>data/other_stuff/kernels/spk/de405s.bsp</itemPath>
+            </logicalFolder>
+          </logicalFolder>
+          <itemPath>data/other_stuff/aderr.tm</itemPath>
+          <itemPath>data/other_stuff/coord.tm</itemPath>
+          <itemPath>data/other_stuff/kervar.tm</itemPath>
+          <itemPath>data/other_stuff/kpool.tm</itemPath>
+          <itemPath>data/other_stuff/win.tm</itemPath>
+          <itemPath>data/other_stuff/xtic.tm</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="src" displayName="src" projectFiles="true">
+        <logicalFolder name="api_examples"
+                       displayName="api_examples"
+                       projectFiles="true">
+          <itemPath>src/api_examples/orbital.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="binary_pck" displayName="binary_pck" projectFiles="true">
+          <itemPath>src/binary_pck/binary_pck.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="event_finding"
+                       displayName="event_finding"
+                       projectFiles="true">
+          <itemPath>src/event_finding/event_finding.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="insitu_sensing"
+                       displayName="insitu_sensing"
+                       projectFiles="true">
+          <itemPath>src/insitu_sensing/convrt.c</itemPath>
+          <itemPath>src/insitu_sensing/getsta.c</itemPath>
+          <itemPath>src/insitu_sensing/sclket.c</itemPath>
+          <itemPath>src/insitu_sensing/scvel.c</itemPath>
+          <itemPath>src/insitu_sensing/soldir.c</itemPath>
+          <itemPath>src/insitu_sensing/sscpnt.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="other_stuff" displayName="other_stuff" projectFiles="true">
+          <itemPath>src/other_stuff/aderr.c</itemPath>
+          <itemPath>src/other_stuff/coord.c</itemPath>
+          <itemPath>src/other_stuff/errsyst.c</itemPath>
+          <itemPath>src/other_stuff/kervar.c</itemPath>
+          <itemPath>src/other_stuff/kpool.c</itemPath>
+          <itemPath>src/other_stuff/sccalc.c</itemPath>
+          <itemPath>src/other_stuff/tkvstr.c</itemPath>
+          <itemPath>src/other_stuff/win.c</itemPath>
+          <itemPath>src/other_stuff/xtix.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="start_programming"
+                       displayName="start_programming"
+                       projectFiles="true">
+          <itemPath>src/start_programming/star_programing.c</itemPath>
+        </logicalFolder>
+      </logicalFolder>
+      <itemPath>src/lessons.c</itemPath>
+      <itemPath>main.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>D:\JOrbit\Spice\Lessons\src</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>D:/naif/PCCYGWINgCC64bit/cspice/include</pElem>
+          </incDir>
+        </cTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>D:/naif/PCCYGWINgCC64bit/cspice/lib/cspice.a</linkerLibFileItem>
+            <linkerLibFileItem>D:/naif/PCCYGWINgCC64bit/cspice/lib/csupport.a</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../CspiceDll"
+                        CT="2"
+                        CN="Debug"
+                        AC="true"
+                        BL="false"
+                        WD="../CspiceDll"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libCspiceDll.${CND_DLIB_EXT}">
+          </makeArtifact>
+        </requiredProjects>
+      </compileType>
+      <item path="data/binary_pck/binary_pck_c.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/binary_pck/binary_pck_diagram.pdf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/fk/earth_assoc_itrf93.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/fk/earth_topo_050714.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/fk/moon_060721.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/fk/moon_assoc_me.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/fk/moon_assoc_pa.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/lsk/naif0008.tls"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/pck/earth_000101_070725_070503.bpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/pck/moon_pa_de403_1950-2198.bpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/pck/pck00008.tpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/spk/de414_2000_2020.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/spk/earthstns_itrf93_050714.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/mrotat.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/dsk/mars_lowres.bds"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/fk/earth_topo_050714.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/lsk/naif0008.tls"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/pck/earth_000101_060525_060303.bpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/pck/pck00008.tpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/spk/ORMM__040501000000_00076XS.BSP"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/spk/de405xs.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/spk/earthstns_itrf93_050714.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/viewpr.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/convrt.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/getsta.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/ck/04135_04171pc_psiv2.bc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/fk/cas_v37.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/lsk/naif0008.tls"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/pck/cpck05Mar2004.tpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/sclk/cas00084.tsc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/spk/020514_SE_SAT105.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/spk/030201AP_SK_SM546_T45.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/spk/981005_PLTEPH-DE405S.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/spk/sat128.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/sclket.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/scvel.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/soldir.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/sscpnt.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/other_stuff/aderr.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/other_stuff/coord.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/other_stuff/kernels/lsk/naif0008.tls"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/other_stuff/kernels/pck/pck00008.tpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/other_stuff/kernels/spk/de405s.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/other_stuff/kervar.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/other_stuff/kpool.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/other_stuff/win.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/other_stuff/xtic.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/api_examples/orbital.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/binary_pck/binary_pck.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/event_finding/event_finding.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/insitu_sensing/convrt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/insitu_sensing/getsta.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/insitu_sensing/sclket.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/insitu_sensing/scvel.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/insitu_sensing/soldir.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/insitu_sensing/sscpnt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/lessons.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/aderr.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/coord.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/errsyst.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/kervar.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/kpool.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/sccalc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/tkvstr.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/win.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/xtix.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/start_programming/star_programing.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="data/binary_pck/binary_pck_c.txt" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/binary_pck/binary_pck_diagram.pdf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/fk/earth_assoc_itrf93.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/fk/earth_topo_050714.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/fk/moon_060721.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/fk/moon_assoc_me.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/fk/moon_assoc_pa.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/lsk/naif0008.tls"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/pck/earth_000101_070725_070503.bpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/pck/moon_pa_de403_1950-2198.bpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/pck/pck00008.tpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/spk/de414_2000_2020.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/kernels/spk/earthstns_itrf93_050714.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/binary_pck/mrotat.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/dsk/mars_lowres.bds"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/fk/earth_topo_050714.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/lsk/naif0008.tls"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/pck/earth_000101_060525_060303.bpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/pck/pck00008.tpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/spk/ORMM__040501000000_00076XS.BSP"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/spk/de405xs.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/kernels/spk/earthstns_itrf93_050714.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/event_finding/viewpr.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/convrt.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/getsta.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/ck/04135_04171pc_psiv2.bc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/fk/cas_v37.tf"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/lsk/naif0008.tls"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/pck/cpck05Mar2004.tpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/sclk/cas00084.tsc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/spk/020514_SE_SAT105.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/spk/030201AP_SK_SM546_T45.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/spk/981005_PLTEPH-DE405S.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/kernels/spk/sat128.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/sclket.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/scvel.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/soldir.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/insitu_sensing/sscpnt.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/other_stuff/aderr.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/other_stuff/coord.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/other_stuff/kernels/lsk/naif0008.tls"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/other_stuff/kernels/pck/pck00008.tpc"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/other_stuff/kernels/spk/de405s.bsp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="data/other_stuff/kervar.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/other_stuff/kpool.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/other_stuff/win.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="data/other_stuff/xtic.tm" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/api_examples/orbital.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/binary_pck/binary_pck.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/event_finding/event_finding.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/insitu_sensing/convrt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/insitu_sensing/getsta.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/insitu_sensing/sclket.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/insitu_sensing/scvel.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/insitu_sensing/soldir.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/insitu_sensing/sscpnt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/lessons.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/aderr.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/coord.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/errsyst.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/kervar.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/kpool.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/sccalc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/tkvstr.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/win.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/other_stuff/xtix.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/start_programming/star_programing.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
