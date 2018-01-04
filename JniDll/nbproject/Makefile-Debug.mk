@@ -34,11 +34,12 @@ include Makefile
 OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
-OBJECTFILES=
+OBJECTFILES= \
+	${OBJECTDIR}/_ext/9a46fe2b/jorbit_spice_jni_Furnsh.o
 
 
 # C Compiler Flags
-CFLAGS=
+CFLAGS=-D__int64="long long"
 
 # CC Compiler Flags
 CCFLAGS=
@@ -60,6 +61,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libJniDll.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libJniDll.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared
+
+${OBJECTDIR}/_ext/9a46fe2b/jorbit_spice_jni_Furnsh.o: /cygdrive/D/JOrbit/Spice/JniDll/src/jorbit_spice_jni_Furnsh.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/9a46fe2b
+	${RM} "$@.d"
+	$(COMPILE.c) -g -Iheaders -I/cygdrive/D/programs/Java/jdk1.8.0_65/include -I/cygdrive/D/programs/Java/jdk1.8.0_65/include/win32  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/9a46fe2b/jorbit_spice_jni_Furnsh.o /cygdrive/D/JOrbit/Spice/JniDll/src/jorbit_spice_jni_Furnsh.c
 
 # Subprojects
 .build-subprojects:

@@ -4,6 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="headers" displayName="headers" projectFiles="true">
+        <itemPath>D:/JOrbit/Spice/JniDll/headers/jorbit_spice_jni_Furnsh.h</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +15,9 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>D:/JOrbit/Spice/JniDll/src/jorbit_spice_jni_Furnsh.c</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -25,6 +31,10 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>D:\JOrbit\Spice\JniDll\src</Elem>
+    <Elem>D:\JOrbit\Spice\JniDll\headers</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="2">
@@ -34,7 +44,25 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <incDir>
+            <pElem>headers</pElem>
+            <pElem>D:/programs/Java/jdk1.8.0_65/include</pElem>
+            <pElem>D:/programs/Java/jdk1.8.0_65/include/win32</pElem>
+          </incDir>
+          <commandLine>-D__int64="long long"</commandLine>
+        </cTool>
       </compileType>
+      <item path="D:/JOrbit/Spice/JniDll/headers/jorbit_spice_jni_Furnsh.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/JniDll/src/jorbit_spice_jni_Furnsh.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
@@ -56,6 +84,16 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="D:/JOrbit/Spice/JniDll/headers/jorbit_spice_jni_Furnsh.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/JniDll/src/jorbit_spice_jni_Furnsh.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
     </conf>
   </confs>
 </configurationDescriptor>
