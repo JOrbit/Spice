@@ -21,7 +21,7 @@ public class Furnsh {
    static {
       logger.log(Level.INFO, "java.library.path = "
               + System.getProperty("java.library.path"));
-      System.loadLibrary("libJinSpic");
+      System.loadLibrary("libJniDll");
    }
 
    public static void main(String[] args) {
