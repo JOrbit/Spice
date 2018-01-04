@@ -60,7 +60,7 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libJniDll.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libJniDll.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared
+	x86_64-w64-mingw32-g++.exe -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libJniDll.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared
 
 ${OBJECTDIR}/_ext/9a46fe2b/jorbit_spice_jni_Furnsh.o: /cygdrive/D/JOrbit/Spice/JniDll/src/jorbit_spice_jni_Furnsh.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/9a46fe2b
