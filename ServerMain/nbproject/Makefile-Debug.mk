@@ -23,7 +23,7 @@ AS=as
 # Macros
 CND_PLATFORM=Cygwin64-Windows
 CND_DLIB_EXT=dll
-CND_CONF=Release
+CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 
@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/9a46fe2b/jorbit_spice_jni_Furnsh.o
+	${OBJECTDIR}/main.o
 
 
 # C Compiler Flags
@@ -52,20 +52,20 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-L../ServerClientLib/dist/Debug/Cygwin64-Windows -lserverclientlib
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libJniDll.${CND_DLIB_EXT}
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/servermain.exe
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libJniDll.${CND_DLIB_EXT}: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/servermain.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libJniDll.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared
+	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/servermain ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/9a46fe2b/jorbit_spice_jni_Furnsh.o: /cygdrive/D/JOrbit/Spice/JniDll/src/jorbit_spice_jni_Furnsh.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/9a46fe2b
+${OBJECTDIR}/main.o: main.c 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/9a46fe2b/jorbit_spice_jni_Furnsh.o /cygdrive/D/JOrbit/Spice/JniDll/src/jorbit_spice_jni_Furnsh.c
+	$(COMPILE.c) -g -I../ServerClientLib/headers -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
 
 # Subprojects
 .build-subprojects:
@@ -73,7 +73,7 @@ ${OBJECTDIR}/_ext/9a46fe2b/jorbit_spice_jni_Furnsh.o: /cygdrive/D/JOrbit/Spice/J
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libJniDll.${CND_DLIB_EXT}
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/servermain.exe
 
 # Subprojects
 .clean-subprojects:

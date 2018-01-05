@@ -3,24 +3,23 @@
     <type>org.netbeans.modules.cnd.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>SpiceJniDll</name>
+            <name>SpiceServeLib</name>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
             <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-                <sourceRootElem>D:\JOrbit\Spice\JniDll\src</sourceRootElem>
-                <sourceRootElem>D:\JOrbit\Spice\JniDll\headers</sourceRootElem>
+                <sourceRootElem>D:\JOrbit\Spice\ServerClientLib\src</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
                     <name>Debug</name>
-                    <type>2</type>
+                    <type>3</type>
                 </confElem>
                 <confElem>
                     <name>Release</name>
-                    <type>2</type>
+                    <type>3</type>
                 </confElem>
             </confList>
             <formatting>

@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin64-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin64-Windows
-CND_ARTIFACT_NAME_Debug=libJniDll.dll
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin64-Windows/libJniDll.dll
+CND_ARTIFACT_NAME_Debug=servermain
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin64-Windows/servermain
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin64-Windows/package
-CND_PACKAGE_NAME_Debug=libJniDll.dll.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin64-Windows/package/libJniDll.dll.tar
+CND_PACKAGE_NAME_Debug=servermain.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin64-Windows/package/servermain.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin64-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin64-Windows
-CND_ARTIFACT_NAME_Release=libJniDll.dll
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin64-Windows/libJniDll.dll
+CND_ARTIFACT_NAME_Release=servermain
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin64-Windows/servermain
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin64-Windows/package
-CND_PACKAGE_NAME_Release=libJniDll.dll.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin64-Windows/package/libJniDll.dll.tar
+CND_PACKAGE_NAME_Release=servermain.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin64-Windows/package/servermain.tar
 #
 # include compiler specific variables
 #
