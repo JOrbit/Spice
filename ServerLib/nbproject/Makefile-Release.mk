@@ -38,7 +38,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/ListenFd.o \
 	${OBJECTDIR}/ServerProcess.o \
 	${OBJECTDIR}/SocketFd.o \
-	${OBJECTDIR}/src/RecvFd.o
+	${OBJECTDIR}/src/RecvFd.o \
+	${OBJECTDIR}/src/handlers/GetEt.o \
+	${OBJECTDIR}/src/handlers/GetGm.o
 
 
 # C Compiler Flags
@@ -86,6 +88,16 @@ ${OBJECTDIR}/src/RecvFd.o: src/RecvFd.c
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/RecvFd.o src/RecvFd.c
+
+${OBJECTDIR}/src/handlers/GetEt.o: src/handlers/GetEt.c 
+	${MKDIR} -p ${OBJECTDIR}/src/handlers
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/handlers/GetEt.o src/handlers/GetEt.c
+
+${OBJECTDIR}/src/handlers/GetGm.o: src/handlers/GetGm.c 
+	${MKDIR} -p ${OBJECTDIR}/src/handlers
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/handlers/GetGm.o src/handlers/GetGm.c
 
 # Subprojects
 .build-subprojects:
