@@ -29,9 +29,10 @@ orbital() {
     /*
        load kernels: LSK, MEX trajectory SPK, and gravity PCK 
      */
-    furnsh_c("../kernels/pub/naif/MEX/kernels/lsk/former_versions/naif0008.tls");
-    furnsh_c("../kernels/pub/naif/MEX/kernels/spk/ORMM__050901000000_00165.BSP");
-    furnsh_c("../kernels/pub/naif/MEX/kernels/pck/DE403-MASSES.TPC");
+    // furnsh_c("../kernels/pub/naif/MEX/kernels/lsk/former_versions/naif0008.tls");
+    furnsh_c("D:/naif/Kernels/MEX/lsk/naif0008.tls");
+    furnsh_c("D:/naif/Kernels/MEX/spk/ORMM__050901000000_00165.BSP");
+    furnsh_c("D:/naif/Kernels/MEX/pck/DE403-MASSES.TPC");
 
     /*
        retrieve GM for Mars 
