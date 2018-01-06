@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=ServerClientLib
+PROJECTNAME=ServerLib
 
 # Active Configuration
 DEFAULTCONF=Debug

@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin64-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin64-Windows
-CND_ARTIFACT_NAME_Debug=libserverclientlib.a
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin64-Windows/libserverclientlib.a
+CND_ARTIFACT_NAME_Debug=libserverlib.a
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin64-Windows/libserverlib.a
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin64-Windows/package
-CND_PACKAGE_NAME_Debug=ServerClientLib.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin64-Windows/package/ServerClientLib.tar
+CND_PACKAGE_NAME_Debug=ServerLib.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin64-Windows/package/ServerLib.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin64-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin64-Windows
-CND_ARTIFACT_NAME_Release=libserverclientlib.a
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin64-Windows/libserverclientlib.a
+CND_ARTIFACT_NAME_Release=libserverlib.a
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin64-Windows/libserverlib.a
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin64-Windows/package
-CND_PACKAGE_NAME_Release=ServerClientLib.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin64-Windows/package/ServerClientLib.tar
+CND_PACKAGE_NAME_Release=ServerLib.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin64-Windows/package/ServerLib.tar
 #
 # include compiler specific variables
 #
