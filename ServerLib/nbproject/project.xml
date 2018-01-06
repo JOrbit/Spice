@@ -10,7 +10,8 @@
             <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-                <sourceRootElem>D:\JOrbit\Spice\ServerClientLib\src</sourceRootElem>
+                <sourceRootElem>src</sourceRootElem>
+                <sourceRootElem>headers</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

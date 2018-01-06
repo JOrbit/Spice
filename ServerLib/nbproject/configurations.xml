@@ -4,7 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>D:/JOrbit/Spice/ServerClientLib/headers/ServerClient.h</itemPath>
+      <logicalFolder name="headers" displayName="headers" projectFiles="true">
+        <itemPath>headers/Server.h</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,10 +16,10 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
-        <itemPath>D:/JOrbit/Spice/ServerClientLib/src/ListenFd.c</itemPath>
+        <itemPath>ListenFd.c</itemPath>
         <itemPath>src/RecvFd.c</itemPath>
-        <itemPath>D:/JOrbit/Spice/ServerClientLib/src/ServerProcess.c</itemPath>
-        <itemPath>D:/JOrbit/Spice/ServerClientLib/src/SocketFd.c</itemPath>
+        <itemPath>ServerProcess.c</itemPath>
+        <itemPath>SocketFd.c</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -33,7 +35,8 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>D:\JOrbit\Spice\ServerClientLib\src</Elem>
+    <Elem>src</Elem>
+    <Elem>headers</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -52,25 +55,13 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="D:/JOrbit/Spice/ServerClientLib/headers/ServerClient.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="ListenFd.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="D:/JOrbit/Spice/ServerClientLib/src/ListenFd.c"
-            ex="false"
-            tool="0"
-            flavor2="0">
+      <item path="ServerProcess.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="D:/JOrbit/Spice/ServerClientLib/src/ServerProcess.c"
-            ex="false"
-            tool="0"
-            flavor2="0">
+      <item path="SocketFd.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="D:/JOrbit/Spice/ServerClientLib/src/SocketFd.c"
-            ex="false"
-            tool="0"
-            flavor2="0">
+      <item path="headers/Server.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/RecvFd.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -97,25 +88,13 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="D:/JOrbit/Spice/ServerClientLib/headers/ServerClient.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="ListenFd.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="D:/JOrbit/Spice/ServerClientLib/src/ListenFd.c"
-            ex="false"
-            tool="0"
-            flavor2="0">
+      <item path="ServerProcess.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="D:/JOrbit/Spice/ServerClientLib/src/ServerProcess.c"
-            ex="false"
-            tool="0"
-            flavor2="0">
+      <item path="SocketFd.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="D:/JOrbit/Spice/ServerClientLib/src/SocketFd.c"
-            ex="false"
-            tool="0"
-            flavor2="0">
+      <item path="headers/Server.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/RecvFd.c" ex="false" tool="0" flavor2="0">
       </item>

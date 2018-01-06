@@ -35,9 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/d4ee5d15/ListenFd.o \
-	${OBJECTDIR}/_ext/d4ee5d15/ServerProcess.o \
-	${OBJECTDIR}/_ext/d4ee5d15/SocketFd.o \
+	${OBJECTDIR}/ListenFd.o \
+	${OBJECTDIR}/ServerProcess.o \
+	${OBJECTDIR}/SocketFd.o \
 	${OBJECTDIR}/src/RecvFd.o
 
 
@@ -67,20 +67,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a: ${OBJECTFILES}
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a
 
-${OBJECTDIR}/_ext/d4ee5d15/ListenFd.o: /cygdrive/D/JOrbit/Spice/ServerClientLib/src/ListenFd.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/d4ee5d15
+${OBJECTDIR}/ListenFd.o: ListenFd.c 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -Iheaders -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/d4ee5d15/ListenFd.o /cygdrive/D/JOrbit/Spice/ServerClientLib/src/ListenFd.c
+	$(COMPILE.c) -g -Iheaders -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ListenFd.o ListenFd.c
 
-${OBJECTDIR}/_ext/d4ee5d15/ServerProcess.o: /cygdrive/D/JOrbit/Spice/ServerClientLib/src/ServerProcess.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/d4ee5d15
+${OBJECTDIR}/ServerProcess.o: ServerProcess.c 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -Iheaders -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/d4ee5d15/ServerProcess.o /cygdrive/D/JOrbit/Spice/ServerClientLib/src/ServerProcess.c
+	$(COMPILE.c) -g -Iheaders -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ServerProcess.o ServerProcess.c
 
-${OBJECTDIR}/_ext/d4ee5d15/SocketFd.o: /cygdrive/D/JOrbit/Spice/ServerClientLib/src/SocketFd.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/d4ee5d15
+${OBJECTDIR}/SocketFd.o: SocketFd.c 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -Iheaders -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/d4ee5d15/SocketFd.o /cygdrive/D/JOrbit/Spice/ServerClientLib/src/SocketFd.c
+	$(COMPILE.c) -g -Iheaders -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SocketFd.o SocketFd.c
 
 ${OBJECTDIR}/src/RecvFd.o: src/RecvFd.c 
 	${MKDIR} -p ${OBJECTDIR}/src
