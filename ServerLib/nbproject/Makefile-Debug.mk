@@ -35,13 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/7d3a4fb8/LoadSpiceData.o \
-	${OBJECTDIR}/ListenFd.o \
-	${OBJECTDIR}/ServerProcess.o \
-	${OBJECTDIR}/SocketFd.o \
-	${OBJECTDIR}/src/RecvFd.o \
-	${OBJECTDIR}/src/handlers/GetEt.o \
-	${OBJECTDIR}/src/handlers/GetGm.o
+	${OBJECTDIR}/src/GetEt.o \
+	${OBJECTDIR}/src/GetGm.o \
+	${OBJECTDIR}/src/LoadSpiceData.o
 
 
 # C Compiler Flags
@@ -70,40 +66,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a: ${OBJECTFILES}
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a
 
-${OBJECTDIR}/_ext/7d3a4fb8/LoadSpiceData.o: /cygdrive/D/JOrbit/Spice/ServerLib/src/handlers/LoadSpiceData.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/7d3a4fb8
-	${RM} "$@.d"
-	$(COMPILE.c) -g -Iheaders -Iheaders/handlers -I../../../naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/7d3a4fb8/LoadSpiceData.o /cygdrive/D/JOrbit/Spice/ServerLib/src/handlers/LoadSpiceData.c
-
-${OBJECTDIR}/ListenFd.o: ListenFd.c 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -g -Iheaders -Iheaders/handlers -I../../../naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ListenFd.o ListenFd.c
-
-${OBJECTDIR}/ServerProcess.o: ServerProcess.c 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -g -Iheaders -Iheaders/handlers -I../../../naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ServerProcess.o ServerProcess.c
-
-${OBJECTDIR}/SocketFd.o: SocketFd.c 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -g -Iheaders -Iheaders/handlers -I../../../naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SocketFd.o SocketFd.c
-
-${OBJECTDIR}/src/RecvFd.o: src/RecvFd.c 
+${OBJECTDIR}/src/GetEt.o: src/GetEt.c 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.c) -g -Iheaders -Iheaders/handlers -I../../../naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/RecvFd.o src/RecvFd.c
+	$(COMPILE.c) -g -Iheaders -I../../../naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/GetEt.o src/GetEt.c
 
-${OBJECTDIR}/src/handlers/GetEt.o: src/handlers/GetEt.c 
-	${MKDIR} -p ${OBJECTDIR}/src/handlers
+${OBJECTDIR}/src/GetGm.o: src/GetGm.c 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.c) -g -Iheaders -Iheaders/handlers -I../../../naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/handlers/GetEt.o src/handlers/GetEt.c
+	$(COMPILE.c) -g -Iheaders -I../../../naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/GetGm.o src/GetGm.c
 
-${OBJECTDIR}/src/handlers/GetGm.o: src/handlers/GetGm.c 
-	${MKDIR} -p ${OBJECTDIR}/src/handlers
+${OBJECTDIR}/src/LoadSpiceData.o: src/LoadSpiceData.c 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.c) -g -Iheaders -Iheaders/handlers -I../../../naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/handlers/GetGm.o src/handlers/GetGm.c
+	$(COMPILE.c) -g -Iheaders -I../../../naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/LoadSpiceData.o src/LoadSpiceData.c
 
 # Subprojects
 .build-subprojects:
