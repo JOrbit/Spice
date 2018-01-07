@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 
-#include "Server.h"
+#include "ServerProcess.h"
+#include "SpiceSocket.h"
 #include "GetEt.h"
 #include "LoadSpiceData.h"
 

@@ -13,6 +13,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>src/ServerProcess.c</itemPath>
+        <itemPath>src/ServerProcess.h</itemPath>
         <itemPath>src/main.c</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -42,20 +44,27 @@
       <compileType>
         <cTool>
           <incDir>
+            <pElem>../SocketLib/headers</pElem>
             <pElem>../ServerLib/headers</pElem>
           </incDir>
         </cTool>
         <linkerTool>
           <linkerAddLib>
+            <pElem>../SocketLib/dist/Debug/Cygwin64-Windows</pElem>
             <pElem>../ServerLib/dist/Debug/Cygwin64-Windows</pElem>
           </linkerAddLib>
           <linkerLibItems>
+            <linkerLibLibItem>socketlib</linkerLibLibItem>
             <linkerLibLibItem>serverlib</linkerLibLibItem>
             <linkerLibFileItem>D:/naif/PCCYGWINgCC64bit/cspice/lib/cspice.a</linkerLibFileItem>
             <linkerLibFileItem>D:/naif/PCCYGWINgCC64bit/cspice/lib/csupport.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="src/ServerProcess.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/ServerProcess.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/main.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
@@ -79,6 +88,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="src/ServerProcess.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/ServerProcess.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/main.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>

@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/ServerProcess.o \
 	${OBJECTDIR}/src/main.o
 
 
@@ -52,7 +53,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../ServerLib/dist/Debug/Cygwin64-Windows -lserverlib /cygdrive/D/naif/PCCYGWINgCC64bit/cspice/lib/cspice.a /cygdrive/D/naif/PCCYGWINgCC64bit/cspice/lib/csupport.a
+LDLIBSOPTIONS=-L../SocketLib/dist/Debug/Cygwin64-Windows -L../ServerLib/dist/Debug/Cygwin64-Windows -lsocketlib -lserverlib /cygdrive/D/naif/PCCYGWINgCC64bit/cspice/lib/cspice.a /cygdrive/D/naif/PCCYGWINgCC64bit/cspice/lib/csupport.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -66,10 +67,15 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/servermain.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/servermain ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/src/ServerProcess.o: src/ServerProcess.c 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -g -I../SocketLib/headers -I../ServerLib/headers -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ServerProcess.o src/ServerProcess.c
+
 ${OBJECTDIR}/src/main.o: src/main.c 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.c) -g -I../ServerLib/headers -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.c
+	$(COMPILE.c) -g -I../SocketLib/headers -I../ServerLib/headers -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/main.o src/main.c
 
 # Subprojects
 .build-subprojects:
