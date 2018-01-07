@@ -4,6 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="headers" displayName="headers" projectFiles="true">
+        <itemPath>headers/SpiceSocket.h</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +15,11 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="src" displayName="src" projectFiles="true">
+        <itemPath>src/ListenFd.c</itemPath>
+        <itemPath>src/RecvFd.c</itemPath>
+        <itemPath>src/SocketFd.c</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -25,6 +33,10 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>src</Elem>
+    <Elem>headers</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="3">
@@ -34,9 +46,22 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <cTool>
+          <incDir>
+            <pElem>headers</pElem>
+          </incDir>
+        </cTool>
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="headers/SpiceSocket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ListenFd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/RecvFd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/SocketFd.c" ex="false" tool="0" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="3">
       <toolsSet>
@@ -60,6 +85,14 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="headers/SpiceSocket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ListenFd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/RecvFd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/SocketFd.c" ex="false" tool="0" flavor2="0">
+      </item>
     </conf>
   </confs>
 </configurationDescriptor>

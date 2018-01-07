@@ -34,7 +34,10 @@ include Makefile
 OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
-OBJECTFILES=
+OBJECTFILES= \
+	${OBJECTDIR}/src/ListenFd.o \
+	${OBJECTDIR}/src/RecvFd.o \
+	${OBJECTDIR}/src/SocketFd.o
 
 
 # C Compiler Flags
@@ -62,6 +65,21 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsocketlib.a: ${OBJECTFILES}
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsocketlib.a
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsocketlib.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsocketlib.a
+
+${OBJECTDIR}/src/ListenFd.o: src/ListenFd.c 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -g -Iheaders -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ListenFd.o src/ListenFd.c
+
+${OBJECTDIR}/src/RecvFd.o: src/RecvFd.c 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -g -Iheaders -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/RecvFd.o src/RecvFd.c
+
+${OBJECTDIR}/src/SocketFd.o: src/SocketFd.c 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -g -Iheaders -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/SocketFd.o src/SocketFd.c
 
 # Subprojects
 .build-subprojects:
