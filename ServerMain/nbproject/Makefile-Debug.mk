@@ -52,11 +52,15 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L../ServerLib/dist/Debug/Cygwin64-Windows -lserverclientlib -lserverlib
+LDLIBSOPTIONS=-L../ServerLib/dist/Debug/Cygwin64-Windows -lserverlib /cygdrive/D/naif/PCCYGWINgCC64bit/cspice/lib/cspice.a /cygdrive/D/naif/PCCYGWINgCC64bit/cspice/lib/csupport.a
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/servermain.exe
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/servermain.exe: /cygdrive/D/naif/PCCYGWINgCC64bit/cspice/lib/cspice.a
+
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/servermain.exe: /cygdrive/D/naif/PCCYGWINgCC64bit/cspice/lib/csupport.a
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/servermain.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}

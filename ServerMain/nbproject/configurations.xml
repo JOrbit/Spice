@@ -50,8 +50,9 @@
             <pElem>../ServerLib/dist/Debug/Cygwin64-Windows</pElem>
           </linkerAddLib>
           <linkerLibItems>
-            <linkerLibLibItem>serverclientlib</linkerLibLibItem>
             <linkerLibLibItem>serverlib</linkerLibLibItem>
+            <linkerLibFileItem>D:/naif/PCCYGWINgCC64bit/cspice/lib/cspice.a</linkerLibFileItem>
+            <linkerLibFileItem>D:/naif/PCCYGWINgCC64bit/cspice/lib/csupport.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
