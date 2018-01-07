@@ -25,16 +25,12 @@ void GetEt(char* msg, char* results) {
    SpiceInt n;
    SpiceDouble et;
 
-   char* rmsg;
-
-   /*
-    *  load kernels: LSK, MEX trajectory SPK, and gravity PCK 
-    */
    const char* delimiters = ",";
    char* token = strtok(msg, delimiters);
 
-   
-   
+   /*
+    * Get UTC and convert to ET
+    */
    printf("INFO: GetEt received token = %s\n", token);
    printf("INFO: GetEt calling str2et_c using token\n");
    str2et_c(token, &et);

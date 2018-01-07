@@ -8,6 +8,7 @@
         <logicalFolder name="handlers" displayName="handlers" projectFiles="true">
           <itemPath>headers/handlers/GetEt.h</itemPath>
           <itemPath>headers/handlers/GetGm.h</itemPath>
+          <itemPath>headers/handlers/LoadSpiceData.h</itemPath>
         </logicalFolder>
         <itemPath>headers/Server.h</itemPath>
       </logicalFolder>
@@ -23,6 +24,7 @@
         <logicalFolder name="handlers" displayName="handlers" projectFiles="true">
           <itemPath>src/handlers/GetEt.c</itemPath>
           <itemPath>src/handlers/GetGm.c</itemPath>
+          <itemPath>D:/JOrbit/Spice/ServerLib/src/handlers/LoadSpiceData.c</itemPath>
         </logicalFolder>
         <itemPath>ListenFd.c</itemPath>
         <itemPath>src/RecvFd.c</itemPath>
@@ -65,6 +67,11 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="D:/JOrbit/Spice/ServerLib/src/handlers/LoadSpiceData.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
       <item path="ListenFd.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="ServerProcess.c" ex="false" tool="0" flavor2="0">
@@ -76,6 +83,8 @@
       <item path="headers/handlers/GetEt.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="headers/handlers/GetGm.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="headers/handlers/LoadSpiceData.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/RecvFd.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -106,6 +115,11 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="D:/JOrbit/Spice/ServerLib/src/handlers/LoadSpiceData.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
       <item path="ListenFd.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="ServerProcess.c" ex="false" tool="0" flavor2="0">
@@ -117,6 +131,8 @@
       <item path="headers/handlers/GetEt.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="headers/handlers/GetGm.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="headers/handlers/LoadSpiceData.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/RecvFd.c" ex="false" tool="0" flavor2="0">
       </item>

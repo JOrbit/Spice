@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/7d3a4fb8/LoadSpiceData.o \
 	${OBJECTDIR}/ListenFd.o \
 	${OBJECTDIR}/ServerProcess.o \
 	${OBJECTDIR}/SocketFd.o \
@@ -68,6 +69,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a: ${OBJECTFILES}
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a
+
+${OBJECTDIR}/_ext/7d3a4fb8/LoadSpiceData.o: /cygdrive/D/JOrbit/Spice/ServerLib/src/handlers/LoadSpiceData.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/7d3a4fb8
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/7d3a4fb8/LoadSpiceData.o /cygdrive/D/JOrbit/Spice/ServerLib/src/handlers/LoadSpiceData.c
 
 ${OBJECTDIR}/ListenFd.o: ListenFd.c 
 	${MKDIR} -p ${OBJECTDIR}
