@@ -8,6 +8,7 @@ package clientmain;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import spice.GetEt;
+import spice.GetSocket;
 import spice.LoadSpiceData;
 
 /**
@@ -34,6 +35,8 @@ public class ClientMain {
       double et = GetEt.getEt("2005 SEP 02 04:50:45");
       msg = "ClientMain got et = " + Double.toString(et);
       LOG.log(Level.INFO, msg);
+      
+      GetSocket.closeSocket();
 
    }
 }
