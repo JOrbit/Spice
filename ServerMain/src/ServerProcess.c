@@ -21,7 +21,16 @@ void ServerProcess(int clientFd) {
 
       LoadSpiceData(ibuf, obuf);
 
+      send(clientFd, obuf, strlen(obuf), MSG_NOSIGNAL);
+      
+      printf("INFO: ServerProcess sent nbytes = %d\n", (int)strlen(obuf));
+      printf("INFO: ServerProcess sent message = %s\n", obuf);
+      
+      for (int i = 0; i < nbytes; i++) {
+         ibuf[i] = 0;
+      }
       nbytes = recv(clientFd, ibuf, BSIZE, MSG_WAITALL);
+      
       printf("INFO: ServerProcess received nbytes = %d\n", nbytes);
       printf("INFO: ServerProcess received message. %s\n", ibuf);
 
