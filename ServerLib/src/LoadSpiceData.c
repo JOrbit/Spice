@@ -22,5 +22,7 @@ void LoadSpiceData(char* msg, char* results) {
    printf("INFO: LoadSpiceData received token = %s\n", token);
    printf("INFO: LoadSpiceData calling furnsh_c token\n");
    furnsh_c(token);
+   sprintf(results, "furnsh_c(%s) called", token);
+   printf("INFO: LoadSpiceData %s\n", results);
 
 }
