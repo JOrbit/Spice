@@ -10,6 +10,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,11 +21,12 @@ import java.util.logging.Logger;
 public class GetEt {
 
    private static final Logger LOG = Logger.getLogger(GetEt.class.getName());
+   private static final String delimiters = ",";
 
    static public double getEt(String utc) {
       double et = 0;
 
-      int nbytes = 1024;
+      int nbytes = 10240;
       byte[] ibytes = new byte[nbytes];
       String msg;
 
@@ -40,8 +42,8 @@ public class GetEt {
          OutputStream outToServer = GetSocket.getSocket().getOutputStream();
          DataOutputStream out = new DataOutputStream(outToServer);
 
-         byte[] obytes = utc.getBytes();
-         out.write(obytes, 0, obytes.length);
+         byte[] utcBytes = utc.getBytes();
+         out.write(utcBytes, 0, utcBytes.length);
          msg = "Sent to server -> " + utc;
          LOG.log(Level.INFO, msg);
 
@@ -52,6 +54,12 @@ public class GetEt {
          imsg = imsg + "\n";
          msg = "Received message -> " + imsg;
          LOG.log(Level.INFO, msg);
+
+         StringTokenizer st = new StringTokenizer(imsg, delimiters);
+         String etString = st.nextToken();
+         msg = "etString = " + etString;
+         LOG.log(Level.INFO, msg);
+         et = Double.parseDouble(etString);
 
       } catch (IOException ex) {
          msg = "Server is not running.";

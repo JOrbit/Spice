@@ -25,7 +25,7 @@ public class LoadSpiceData {
 
    public static String LoadLskFile(String lskFile) {
       if (LskFile == null) {
-         int nbytes = 1024;
+         int nbytes = 10240;
          byte[] ibytes = new byte[nbytes];
          String msg;
 
@@ -41,8 +41,10 @@ public class LoadSpiceData {
             OutputStream outToServer = GetSocket.getSocket().getOutputStream();
             DataOutputStream out = new DataOutputStream(outToServer);
 
-            byte[] obytes = lskFile.getBytes();
-            out.write(obytes, 0, obytes.length);
+            byte[] lskBytes = lskFile.getBytes();
+            msg = "LoadSpiceData lskBytes.length = " + lskBytes.length;
+            LOG.log(Level.INFO, msg);
+            out.write(lskBytes, 0, lskBytes.length);
             msg = "Sent to server -> " + lskFile;
             LOG.log(Level.INFO, msg);
 
