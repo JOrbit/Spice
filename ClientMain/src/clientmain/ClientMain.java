@@ -5,11 +5,10 @@
  */
 package clientmain;
 
-import java.util.logging.Level;
+import java.net.Socket;
 import java.util.logging.Logger;
-import spice.GetEt;
 import spice.GetSocket;
-import spice.LoadSpiceData;
+import spice.SpiceCommands;
 
 /**
  *
@@ -23,20 +22,11 @@ public class ClientMain {
     * @param args the command line arguments
     */
    public static void main(String[] args) {
-      String lskFile = "D:/naif/Kernels/MEX/lsk/naif0008.tls";
-      String utc = "2005 SEP 02 04:50:45";
+      Socket socket = GetSocket.getSocket();
       
-      String msg = "ClientMain loading LskFile = " + lskFile;
-      LOG.log(Level.INFO, msg);
-      LoadSpiceData.LoadLskFile(lskFile);
-
-      msg = "ClientMaing calling getEt with UTC = " + utc;
-      LOG.log(Level.INFO, msg);
-      double et = GetEt.getEt("2005 SEP 02 04:50:45");
-      msg = "ClientMain got et = " + Double.toString(et);
-      LOG.log(Level.INFO, msg);
+      byte[] send = SpiceCommands.toBytes();
+      byte[] received = GetSocket.sendReceive(socket, send);
       
       GetSocket.closeSocket();
-
    }
 }
