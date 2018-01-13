@@ -15,6 +15,7 @@
       <logicalFolder name="src" displayName="src" projectFiles="true">
         <itemPath>src/ServerProcess.c</itemPath>
         <itemPath>src/ServerProcess.h</itemPath>
+        <itemPath>src/ServerProcessWorks.c</itemPath>
         <itemPath>src/main.c</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -65,6 +66,8 @@
       </item>
       <item path="src/ServerProcess.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="src/ServerProcessWorks.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="src/main.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
@@ -91,6 +94,8 @@
       <item path="src/ServerProcess.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/ServerProcess.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ServerProcessWorks.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/main.c" ex="false" tool="0" flavor2="0">
       </item>

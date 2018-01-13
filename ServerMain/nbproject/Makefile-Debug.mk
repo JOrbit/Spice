@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/ServerProcess.o \
+	${OBJECTDIR}/src/ServerProcessWorks.o \
 	${OBJECTDIR}/src/main.o
 
 
@@ -71,6 +72,11 @@ ${OBJECTDIR}/src/ServerProcess.o: src/ServerProcess.c
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.c) -g -I../SocketLib/headers -I../ServerLib/headers -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ServerProcess.o src/ServerProcess.c
+
+${OBJECTDIR}/src/ServerProcessWorks.o: src/ServerProcessWorks.c 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -g -I../SocketLib/headers -I../ServerLib/headers -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ServerProcessWorks.o src/ServerProcessWorks.c
 
 ${OBJECTDIR}/src/main.o: src/main.c 
 	${MKDIR} -p ${OBJECTDIR}/src

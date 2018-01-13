@@ -8,16 +8,13 @@
 #include "SpiceSocket.h"
 #include "GetEt.h"
 #include "LoadSpiceData.h"
-#include "ProcessSpiceCommands.h"
 
-void ServerProcess(int clientFd) {
+void ServerProcessWorks(int clientFd) {
    char ibuf[BSIZE] = {0};
    char obuf[BSIZE] = {0};
    int nbytes;
 
    while ((nbytes = recv(clientFd, ibuf, BSIZE, MSG_WAITALL))) {
-      
-      ProcessSpiceCommands(ibuf);
 
       printf("INFO: ServerProcess received nbytes = %d\n", nbytes);
       printf("INFO: ServerProcess received message. %s\n", ibuf);
@@ -46,5 +43,5 @@ void ServerProcess(int clientFd) {
    }
 
    printf("SERVER: Received nbytes = %d\n", nbytes);
-   
+
 }
