@@ -32,13 +32,6 @@
 #define BACKLOG 1
 #define BSIZE 10240
 
-#define FURNSH_ID 1
-
-typedef struct {
-   int id;
-   char data[BSIZE - sizeof (int)];
-} SpiceId;
-
 #ifdef __cplusplus
 extern "C" {
 #endif
