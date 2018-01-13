@@ -26,8 +26,8 @@ public class GetEt {
    static public double getEt(String utc) {
       double et = 0;
 
-      int nbytes = 10240;
-      byte[] ibytes = new byte[nbytes];
+      
+      byte[] ibytes = new byte[GetSocket.BSIZE];
       String msg;
 
       try {
@@ -47,7 +47,7 @@ public class GetEt {
          msg = "Sent to server -> " + utc;
          LOG.log(Level.INFO, msg);
 
-         nbytes = in.read(ibytes, 0, ibytes.length);
+         int nbytes = in.read(ibytes, 0, ibytes.length);
          msg = "Read nbytes = " + nbytes;
          LOG.log(Level.INFO, msg);
          String imsg = new String(ibytes, 0, nbytes);

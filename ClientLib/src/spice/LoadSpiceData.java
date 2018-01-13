@@ -25,8 +25,8 @@ public class LoadSpiceData {
 
    public static String LoadLskFile(String lskFile) {
       if (LskFile == null) {
-         int nbytes = 10240;
-         byte[] ibytes = new byte[nbytes];
+         int nbytes;
+         byte[] ibytes = new byte[GetSocket.BSIZE];
          String msg;
 
          try {

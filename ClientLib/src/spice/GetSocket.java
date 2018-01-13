@@ -5,7 +5,11 @@
  */
 package spice;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +25,8 @@ public class GetSocket {
    private static final String ServerName = "localhost";
    private static final int Port = 8080;
    private static Socket socket = null;
+
+   public static final int BSIZE = 10240;
 
    public static Socket getSocket() {
       if (GetSocket.socket == null) {
@@ -48,6 +54,26 @@ public class GetSocket {
          }
          GetSocket.socket = null;
       }
+   }
+
+   public static byte[] sendReceive(Socket socket, byte[] send) {
+      byte[] received = new byte[GetSocket.BSIZE];
+
+      try {
+         InputStream inFromServer = null;
+         inFromServer = GetSocket.getSocket().getInputStream();
+         DataInputStream in = new DataInputStream(inFromServer);
+         OutputStream outToServer = GetSocket.getSocket().getOutputStream();
+         DataOutputStream out = new DataOutputStream(outToServer);
+         
+         out.write(send, 0, send.length);
+         
+         int nbytes = in.read(received, 0, received.length);
+      } catch (IOException ex) {
+         Logger.getLogger(GetSocket.class.getName()).log(Level.SEVERE, null, ex);
+      }
+
+      return received;
    }
 
 }
