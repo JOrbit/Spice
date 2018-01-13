@@ -37,7 +37,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/src/GetEt.o \
 	${OBJECTDIR}/src/GetGm.o \
-	${OBJECTDIR}/src/LoadSpiceData.o
+	${OBJECTDIR}/src/LoadSpiceData.o \
+	${OBJECTDIR}/src/ProcessSpiceCommands.o
 
 
 # C Compiler Flags
@@ -80,6 +81,11 @@ ${OBJECTDIR}/src/LoadSpiceData.o: src/LoadSpiceData.c
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/LoadSpiceData.o src/LoadSpiceData.c
+
+${OBJECTDIR}/src/ProcessSpiceCommands.o: src/ProcessSpiceCommands.c 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ProcessSpiceCommands.o src/ProcessSpiceCommands.c
 
 # Subprojects
 .build-subprojects:
