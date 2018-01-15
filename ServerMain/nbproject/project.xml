@@ -8,7 +8,10 @@
             <cpp-extensions/>
             <header-extensions>h</header-extensions>
             <sourceEncoding>UTF-8</sourceEncoding>
-            <make-dep-projects/>
+            <make-dep-projects>
+                <make-dep-project>../SocketLib</make-dep-project>
+                <make-dep-project>../ServerLib</make-dep-project>
+            </make-dep-projects>
             <sourceRootList>
                 <sourceRootElem>src</sourceRootElem>
             </sourceRootList>

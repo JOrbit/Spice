@@ -61,6 +61,28 @@
             <linkerLibFileItem>D:/naif/PCCYGWINgCC64bit/cspice/lib/csupport.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
+        <requiredProjects>
+          <makeArtifact PL="../ServerLib"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="../ServerLib"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a">
+          </makeArtifact>
+          <makeArtifact PL="../SocketLib"
+                        CT="3"
+                        CN="Debug"
+                        AC="true"
+                        BL="true"
+                        WD="../SocketLib"
+                        BC="${MAKE}  -f Makefile CONF=Debug"
+                        CC="${MAKE}  -f Makefile CONF=Debug clean"
+                        OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsocketlib.a">
+          </makeArtifact>
+        </requiredProjects>
       </compileType>
       <item path="src/ServerProcess.c" ex="false" tool="0" flavor2="0">
       </item>

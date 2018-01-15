@@ -85,6 +85,8 @@ ${OBJECTDIR}/src/main.o: src/main.c
 
 # Subprojects
 .build-subprojects:
+	cd ../ServerLib && ${MAKE}  -f Makefile CONF=Debug
+	cd ../SocketLib && ${MAKE}  -f Makefile CONF=Debug
 
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
@@ -93,6 +95,8 @@ ${OBJECTDIR}/src/main.o: src/main.c
 
 # Subprojects
 .clean-subprojects:
+	cd ../ServerLib && ${MAKE}  -f Makefile CONF=Debug clean
+	cd ../SocketLib && ${MAKE}  -f Makefile CONF=Debug clean
 
 # Enable dependency checking
 .dep.inc: .depcheck-impl
