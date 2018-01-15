@@ -15,18 +15,19 @@
 #define PROCESSSPICECOMMANDS_H
 
 
-int NumCmds = 0;
 #define NUMCMDS 4096
-char SpiceCommands[NUMCMDS] = {0}; 
-char SpiceInputs[NUMCMDS] = {0}; 
-char SpiceOutputs[NUMCMDS] = {0}; 
+#define DELIMITER ","
+
+static int NumCmds = 0;
+static char* SpiceCommands[NUMCMDS] = {0}; 
+
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 
-char * ProcessSpiceCommands(const char* ibuf);
+char * ProcessSpiceCommands(char* ibuf);
 
 #ifdef __cplusplus
 }
