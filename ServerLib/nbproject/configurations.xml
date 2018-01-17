@@ -8,6 +8,7 @@
         <itemPath>headers/GetEt.h</itemPath>
         <itemPath>headers/GetGm.h</itemPath>
         <itemPath>headers/LoadSpiceData.h</itemPath>
+        <itemPath>headers/ProcessSpiceCommand.h</itemPath>
         <itemPath>headers/ProcessSpiceCommands.h</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -22,6 +23,7 @@
         <itemPath>src/GetEt.c</itemPath>
         <itemPath>src/GetGm.c</itemPath>
         <itemPath>src/LoadSpiceData.c</itemPath>
+        <itemPath>src/ProcessSpiceCommand.c</itemPath>
         <itemPath>src/ProcessSpiceCommands.c</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -65,6 +67,8 @@
       </item>
       <item path="headers/LoadSpiceData.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="headers/ProcessSpiceCommand.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="headers/ProcessSpiceCommands.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/GetEt.c" ex="false" tool="0" flavor2="0">
@@ -72,6 +76,8 @@
       <item path="src/GetGm.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/LoadSpiceData.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/ProcessSpiceCommand.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/ProcessSpiceCommands.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -104,6 +110,8 @@
       </item>
       <item path="headers/LoadSpiceData.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="headers/ProcessSpiceCommand.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="headers/ProcessSpiceCommands.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/GetEt.c" ex="false" tool="0" flavor2="0">
@@ -111,6 +119,8 @@
       <item path="src/GetGm.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/LoadSpiceData.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/ProcessSpiceCommand.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/ProcessSpiceCommands.c" ex="false" tool="0" flavor2="0">
       </item>

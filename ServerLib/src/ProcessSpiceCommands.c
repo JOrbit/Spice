@@ -9,7 +9,9 @@
 
 #include "ProcessSpiceCommands.h"
 
-char * ProcessSpiceCommands(char* ibuf) {
+int ProcessSpiceCommands(char* ibuf, char** SpiceCommands) {
+   
+   int NumCmds = 0;
 
    printf("INFO: ProcessSpiceCommands received ibuf = %s\n", ibuf);
 
@@ -26,9 +28,11 @@ char * ProcessSpiceCommands(char* ibuf) {
       if (command == 1) {
          printf("INFO: ProcessSpiceCommands received command = %s\n", token);
          SpiceCommands[NumCmds] = strdup(token);
+         printf("DEBUG: ProcessSpiceCommands SpiceCommands[%d] = %s\n",
+                 NumCmds, SpiceCommands[NumCmds]);
          NumCmds++;
          command = 0;
-         printf("DEBUG: End of command processing\n");
+         printf("DEBUG: ProcessSpiceCommands End of command processing\n");
 
       } else {
          int ninputs = atoi(token);
@@ -51,6 +55,6 @@ char * ProcessSpiceCommands(char* ibuf) {
       printf("INFO: ProcessSpiceCommands received token = %s\n", token);
 
    }
-
-   return obuf;
+   
+   return(NumCmds);
 }

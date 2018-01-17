@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/GetEt.o \
 	${OBJECTDIR}/src/GetGm.o \
 	${OBJECTDIR}/src/LoadSpiceData.o \
+	${OBJECTDIR}/src/ProcessSpiceCommand.o \
 	${OBJECTDIR}/src/ProcessSpiceCommands.o
 
 
@@ -81,6 +82,11 @@ ${OBJECTDIR}/src/LoadSpiceData.o: src/LoadSpiceData.c
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/LoadSpiceData.o src/LoadSpiceData.c
+
+${OBJECTDIR}/src/ProcessSpiceCommand.o: src/ProcessSpiceCommand.c 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ProcessSpiceCommand.o src/ProcessSpiceCommand.c
 
 ${OBJECTDIR}/src/ProcessSpiceCommands.o: src/ProcessSpiceCommands.c 
 	${MKDIR} -p ${OBJECTDIR}/src

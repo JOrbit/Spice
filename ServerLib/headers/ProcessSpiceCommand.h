@@ -5,29 +5,25 @@
  */
 
 /* 
- * File:   ProcessSpiceCommands.h
+ * File:   ProcessSpiceCommand.h
  * Author: owner
  *
- * Created on January 9, 2018, 7:17 PM
+ * Created on January 16, 2018, 6:17 PM
  */
 
-#ifndef PROCESSSPICECOMMANDS_H
-#define PROCESSSPICECOMMANDS_H
-
-
-#define NUMCMDS 4096
-#define DELIMITER ","
+#ifndef PROCESSSPICECOMMAND_H
+#define PROCESSSPICECOMMAND_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 
-int ProcessSpiceCommands(char*, char** );
+void ProcessSpiceCommand(char* , int,  char* );
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* PROCESSSPICECOMMANDS_H */
+#endif /* PROCESSSPICECOMMAND_H */
 
