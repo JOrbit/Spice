@@ -56,19 +56,24 @@ public class GetSocket {
       }
    }
 
-   public static byte[] sendReceive(Socket socket, byte[] send) {
-      byte[] received = new byte[GetSocket.BSIZE];
-
+   public static byte[] sendReceive(Socket socket, byte[] send, byte[] receive) {
+      byte[] received = null;
       try {
          InputStream inFromServer = null;
          inFromServer = GetSocket.getSocket().getInputStream();
          DataInputStream in = new DataInputStream(inFromServer);
          OutputStream outToServer = GetSocket.getSocket().getOutputStream();
          DataOutputStream out = new DataOutputStream(outToServer);
-         
+
          out.write(send, 0, send.length);
-         
-         int nbytes = in.read(received, 0, received.length);
+
+         int nbytes = in.read(receive, 0, receive.length);
+         LOG.log(Level.INFO, "in.read nbytes = " + nbytes);
+         received = new byte[nbytes];
+         LOG.log(Level.INFO, "received.length = " + received.length);
+         System.arraycopy(receive, 0, received, 0, nbytes);
+         LOG.log(Level.INFO, "received.length = " + received.length);
+
       } catch (IOException ex) {
          Logger.getLogger(GetSocket.class.getName()).log(Level.SEVERE, null, ex);
       }
