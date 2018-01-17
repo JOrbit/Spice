@@ -16,6 +16,8 @@
 
 #include "SpiceSocket.h"
 #include "ServerProcess.h"
+#include "ProcessSpiceCommands.h"
+
 
 
 
