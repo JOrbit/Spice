@@ -8,8 +8,10 @@ package clientmain;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import spice.GetSocket;
-import spice.SpiceCommands;
+import jspice.Furnsh;
+import jspice.GetSocket;
+import jspice.SpiceCommands;
+import jspice.Str2et;
 
 /**
  *
@@ -33,12 +35,23 @@ public class ClientMain {
       String msg = new String(received, 0, received.length);
       LOG.log(Level.INFO, "Received = " + msg);
 
-      String spiceCommand = "BODVRD";
-      LOG.log(Level.INFO, "Sending spice command = " + spiceCommand);
-      send = spiceCommand.getBytes();
+      String lskFile = "D:/naif/Kernels/MEX/lsk/naif0008.tls";
+      Furnsh furnshLsk = new Furnsh(lskFile);
+      LOG.log(Level.INFO, "Sending spice command = " + furnshLsk);
+      send = furnshLsk.toBytes();
       received = GetSocket.sendReceive(socket, send, receive);
       msg = new String(received, 0, received.length);
       LOG.log(Level.INFO, "Received = " + msg);
+
+      String utc = "2005 SEP 02 04:50:45";
+      Str2et str2etUtc = new Str2et(utc);
+      LOG.log(Level.INFO, "Sending spice command = " + str2etUtc);
+      send = str2etUtc.toBytes();
+      received = GetSocket.sendReceive(socket, send, receive);
+      msg = new String(received, 0, received.length);
+      LOG.log(Level.INFO, "Received = " + msg);
+      double et = Double.parseDouble(msg);
+      LOG.log(Level.INFO, "et = " + et);
 
       GetSocket.closeSocket();
    }
