@@ -17,7 +17,9 @@
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
         <itemPath>src/ListenFd.c</itemPath>
+        <itemPath>src/Receive.c</itemPath>
         <itemPath>src/RecvFd.c</itemPath>
+        <itemPath>src/Send.c</itemPath>
         <itemPath>src/SocketFd.c</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -58,7 +60,11 @@
       </item>
       <item path="src/ListenFd.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="src/Receive.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="src/RecvFd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/Send.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/SocketFd.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -89,7 +95,11 @@
       </item>
       <item path="src/ListenFd.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="src/Receive.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="src/RecvFd.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/Send.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/SocketFd.c" ex="false" tool="0" flavor2="0">
       </item>

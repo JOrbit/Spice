@@ -36,7 +36,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/src/ListenFd.o \
+	${OBJECTDIR}/src/Receive.o \
 	${OBJECTDIR}/src/RecvFd.o \
+	${OBJECTDIR}/src/Send.o \
 	${OBJECTDIR}/src/SocketFd.o
 
 
@@ -71,10 +73,20 @@ ${OBJECTDIR}/src/ListenFd.o: src/ListenFd.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ListenFd.o src/ListenFd.c
 
+${OBJECTDIR}/src/Receive.o: src/Receive.c 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Receive.o src/Receive.c
+
 ${OBJECTDIR}/src/RecvFd.o: src/RecvFd.c 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/RecvFd.o src/RecvFd.c
+
+${OBJECTDIR}/src/Send.o: src/Send.c 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Send.o src/Send.c
 
 ${OBJECTDIR}/src/SocketFd.o: src/SocketFd.c 
 	${MKDIR} -p ${OBJECTDIR}/src

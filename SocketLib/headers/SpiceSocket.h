@@ -41,6 +41,10 @@ extern "C" {
    int RecvFd();
 
    int SocketFd(struct addrinfo **addrinfoResult);
+   
+   void Send(int clientFD, char* message);
+   
+   int Receive(int clientFd, char* massage);
 
 #ifdef __cplusplus
 }
