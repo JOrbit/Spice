@@ -5,11 +5,12 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="headers" displayName="headers" projectFiles="true">
-        <itemPath>headers/GetEt.h</itemPath>
+        <itemPath>headers/Furnsh.h</itemPath>
         <itemPath>headers/GetGm.h</itemPath>
         <itemPath>headers/LoadSpiceData.h</itemPath>
         <itemPath>headers/ProcessSpiceCommand.h</itemPath>
         <itemPath>headers/ProcessSpiceCommands.h</itemPath>
+        <itemPath>headers/Str2et.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -20,11 +21,11 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
-        <itemPath>src/GetEt.c</itemPath>
+        <itemPath>src/Furnsh.c</itemPath>
         <itemPath>src/GetGm.c</itemPath>
-        <itemPath>src/LoadSpiceData.c</itemPath>
         <itemPath>src/ProcessSpiceCommand.c</itemPath>
         <itemPath>src/ProcessSpiceCommands.c</itemPath>
+        <itemPath>src/Str2et.c</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -61,7 +62,7 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="headers/GetEt.h" ex="false" tool="3" flavor2="0">
+      <item path="headers/Furnsh.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="headers/GetGm.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -71,15 +72,17 @@
       </item>
       <item path="headers/ProcessSpiceCommands.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/GetEt.c" ex="false" tool="0" flavor2="0">
+      <item path="headers/Str2et.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Furnsh.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/GetGm.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="src/LoadSpiceData.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/ProcessSpiceCommand.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/ProcessSpiceCommands.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/Str2et.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="3">
@@ -104,7 +107,7 @@
         <archiverTool>
         </archiverTool>
       </compileType>
-      <item path="headers/GetEt.h" ex="false" tool="3" flavor2="0">
+      <item path="headers/Furnsh.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="headers/GetGm.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -114,15 +117,17 @@
       </item>
       <item path="headers/ProcessSpiceCommands.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="src/GetEt.c" ex="false" tool="0" flavor2="0">
+      <item path="headers/Str2et.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/Furnsh.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/GetGm.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="src/LoadSpiceData.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/ProcessSpiceCommand.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/ProcessSpiceCommands.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/Str2et.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
   </confs>

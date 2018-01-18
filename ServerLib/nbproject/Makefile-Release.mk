@@ -35,11 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/src/GetEt.o \
+	${OBJECTDIR}/src/Furnsh.o \
 	${OBJECTDIR}/src/GetGm.o \
-	${OBJECTDIR}/src/LoadSpiceData.o \
 	${OBJECTDIR}/src/ProcessSpiceCommand.o \
-	${OBJECTDIR}/src/ProcessSpiceCommands.o
+	${OBJECTDIR}/src/ProcessSpiceCommands.o \
+	${OBJECTDIR}/src/Str2et.o
 
 
 # C Compiler Flags
@@ -68,20 +68,15 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a: ${OBJECTFILES}
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a
 
-${OBJECTDIR}/src/GetEt.o: src/GetEt.c 
+${OBJECTDIR}/src/Furnsh.o: src/Furnsh.c 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/GetEt.o src/GetEt.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Furnsh.o src/Furnsh.c
 
 ${OBJECTDIR}/src/GetGm.o: src/GetGm.c 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/GetGm.o src/GetGm.c
-
-${OBJECTDIR}/src/LoadSpiceData.o: src/LoadSpiceData.c 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/LoadSpiceData.o src/LoadSpiceData.c
 
 ${OBJECTDIR}/src/ProcessSpiceCommand.o: src/ProcessSpiceCommand.c 
 	${MKDIR} -p ${OBJECTDIR}/src
@@ -92,6 +87,11 @@ ${OBJECTDIR}/src/ProcessSpiceCommands.o: src/ProcessSpiceCommands.c
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ProcessSpiceCommands.o src/ProcessSpiceCommands.c
+
+${OBJECTDIR}/src/Str2et.o: src/Str2et.c 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Str2et.o src/Str2et.c
 
 # Subprojects
 .build-subprojects:

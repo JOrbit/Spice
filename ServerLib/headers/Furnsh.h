@@ -5,24 +5,25 @@
  */
 
 /* 
- * File:   GetEt.h
+ * File:   Furnsh.h
  * Author: owner
  *
- * Created on January 6, 2018, 5:20 PM
+ * Created on January 18, 2018, 3:01 PM
  */
 
-#ifndef GETET_H
-#define GETET_H
+#ifndef FURNSH_H
+#define FURNSH_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-   
-   void GetEt(char*, char*);
+
+void Furnsh(char* token, char* obuf);
+
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* GETET_H */
+#endif /* FURNSH_H */
 
