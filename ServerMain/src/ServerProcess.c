@@ -6,10 +6,10 @@
 
 #include "ServerProcess.h"
 #include "SpiceSocket.h"
-#include "GetEt.h"
-#include "LoadSpiceData.h"
 #include "ProcessSpiceCommands.h"
 #include "ProcessSpiceCommand.h"
+
+void ClearBuf(int nybtes, char* ibuf);
 
 void ServerProcess(int clientFd) {
    int NumCmds = 0;
@@ -20,17 +20,14 @@ void ServerProcess(int clientFd) {
    char obuf[BSIZE] = {0};
    int nbytes;
 
-   nbytes = recv(clientFd, ibuf, BSIZE, MSG_WAITALL);
-   printf("INFO: ServerProcess received nbytes = %d\n", nbytes);
-   printf("INFO: ServerProcess received message. %s\n", ibuf);
+   nbytes = Receive(clientFd, ibuf);
    NumCmds = ProcessSpiceCommands(ibuf, SpiceCommands);
-   printf("INFO: ServerProcess called ProcessSpiceCommands\n");
-   printf("DEBUG: ServerProcess NumCmds = %d\n", NumCmds);
    sprintf(obuf, "ServerProcess ProcessSpiceCommands called.");
-   printf("INFO: ServerProcess strlen(obuf) = %d\n", strlen(obuf));
-   send(clientFd, obuf, strlen(obuf), MSG_NOSIGNAL);
+   Send(clientFd, obuf);
+   ClearBuf(nbytes, ibuf);
+   ClearBuf(strlen(obuf), obuf);
 
-   while ((nbytes = recv(clientFd, ibuf, BSIZE, MSG_WAITALL))) {
+   while ((nbytes = Receive(clientFd, ibuf))) {
       char* token = strtok(ibuf, DELIMITER);
       printf("INFO: ServerProcess received token = %s\n", token);
       int found = 0;
@@ -43,8 +40,9 @@ void ServerProcess(int clientFd) {
             printf("INFO: ServerProcess found spice command %s\n", SpiceCommands[i]);
             found = 1;
             ProcessSpiceCommand(token, i, obuf);
-            printf("INFO: strlen(obuf) = %d\n", strlen(obuf));
-            send(clientFd, obuf, strlen(obuf), MSG_NOSIGNAL);
+            Send(clientFd, obuf);
+            ClearBuf(nbytes, ibuf);
+            ClearBuf(strlen(obuf), obuf);
          }
       }
       if (found == 0) {
@@ -52,5 +50,10 @@ void ServerProcess(int clientFd) {
       }
 
    }
+}
 
+void ClearBuf(int nbytes, char* ibuf) {
+   for (int i = 0; i < nbytes; i++) {
+      ibuf[i] = 0;
+   }
 }
