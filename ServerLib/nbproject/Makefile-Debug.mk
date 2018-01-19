@@ -38,7 +38,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/src/Furnsh.o \
 	${OBJECTDIR}/src/GetGm.o \
 	${OBJECTDIR}/src/ProcessSpiceCommand.o \
-	${OBJECTDIR}/src/ProcessSpiceCommands.o \
 	${OBJECTDIR}/src/Str2et.o
 
 
@@ -82,11 +81,6 @@ ${OBJECTDIR}/src/ProcessSpiceCommand.o: src/ProcessSpiceCommand.c
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.c) -g -Iheaders -I../../../naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ProcessSpiceCommand.o src/ProcessSpiceCommand.c
-
-${OBJECTDIR}/src/ProcessSpiceCommands.o: src/ProcessSpiceCommands.c 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} "$@.d"
-	$(COMPILE.c) -g -Iheaders -I../../../naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ProcessSpiceCommands.o src/ProcessSpiceCommands.c
 
 ${OBJECTDIR}/src/Str2et.o: src/Str2et.c 
 	${MKDIR} -p ${OBJECTDIR}/src

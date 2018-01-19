@@ -10,7 +10,7 @@
 #include "Furnsh.h"
 #include "Str2et.h"
 
-void ProcessSpiceCommand(char* token, int ispc, char* obuf) {
+void ProcessSpiceCommand(char* token, char* obuf) {
 
    printf("INFO: ProcessSpiceCommand token = %s\n", token);
    if (strcmp(token, "FURNSH") == 0) {
@@ -22,5 +22,7 @@ void ProcessSpiceCommand(char* token, int ispc, char* obuf) {
    } else {
       sprintf(obuf, "INFO: ProcessSpiceCommand received UNKNOWN COMMAND");
    }
+   
+   
   
 }

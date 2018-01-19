@@ -14,12 +14,14 @@
 #ifndef PROCESSSPICECOMMAND_H
 #define PROCESSSPICECOMMAND_H
 
+#define DELIMITER ","
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 
-void ProcessSpiceCommand(char* , int,  char* );
+   void ProcessSpiceCommand(char* token, char* obuf);
 
 #ifdef __cplusplus
 }

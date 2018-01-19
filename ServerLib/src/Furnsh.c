@@ -7,8 +7,8 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "ProcessSpiceCommands.h"
 #include "Furnsh.h"
+#include "ProcessSpiceCommand.h"
 #include "SpiceUsr.h"
 
 void Furnsh(char* token, char* obuf) {

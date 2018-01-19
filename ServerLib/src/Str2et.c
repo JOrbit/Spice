@@ -7,7 +7,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "ProcessSpiceCommands.h"
+#include "ProcessSpiceCommand.h"
 #include "Str2et.h"
 #include "SpiceUsr.h"
 

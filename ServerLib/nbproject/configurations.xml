@@ -9,7 +9,6 @@
         <itemPath>headers/GetGm.h</itemPath>
         <itemPath>headers/LoadSpiceData.h</itemPath>
         <itemPath>headers/ProcessSpiceCommand.h</itemPath>
-        <itemPath>headers/ProcessSpiceCommands.h</itemPath>
         <itemPath>headers/Str2et.h</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -24,7 +23,6 @@
         <itemPath>src/Furnsh.c</itemPath>
         <itemPath>src/GetGm.c</itemPath>
         <itemPath>src/ProcessSpiceCommand.c</itemPath>
-        <itemPath>src/ProcessSpiceCommands.c</itemPath>
         <itemPath>src/Str2et.c</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -70,8 +68,6 @@
       </item>
       <item path="headers/ProcessSpiceCommand.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="headers/ProcessSpiceCommands.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="headers/Str2et.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Furnsh.c" ex="false" tool="0" flavor2="0">
@@ -79,8 +75,6 @@
       <item path="src/GetGm.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/ProcessSpiceCommand.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="src/ProcessSpiceCommands.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/Str2et.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -115,8 +109,6 @@
       </item>
       <item path="headers/ProcessSpiceCommand.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="headers/ProcessSpiceCommands.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="headers/Str2et.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="src/Furnsh.c" ex="false" tool="0" flavor2="0">
@@ -124,8 +116,6 @@
       <item path="src/GetGm.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/ProcessSpiceCommand.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="src/ProcessSpiceCommands.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="src/Str2et.c" ex="false" tool="0" flavor2="0">
       </item>
