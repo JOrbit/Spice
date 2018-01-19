@@ -17,6 +17,8 @@ public class Furnsh {
    private static final String COMMAND = "FURNSH";
 
    private String fileName = null;
+   private String data = null;
+   private String status = null;
 
    private Furnsh() {
    }
@@ -41,9 +43,16 @@ public class Furnsh {
       s = s + SpiceConstants.DELIMITER;
       return s;
    }
-   
-   public byte[] toBytes() {
+
+   private byte[] toBytes() {
       return this.toString().getBytes();
+   }
+
+   public String process() {
+      byte[] received = GetSocket.sendReceive(this.toBytes());
+      this.status = new String(received, 0, received.length);
+      return this.status;
+
    }
 
 }

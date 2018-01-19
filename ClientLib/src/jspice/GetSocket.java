@@ -28,7 +28,9 @@ public class GetSocket {
 
    public static final int BSIZE = 10240;
 
-   public static Socket getSocket() {
+   public static byte[] receive = new byte[BSIZE];
+   
+   private static Socket getSocket() {
       if (GetSocket.socket == null) {
          String msg = "Connecting to " + GetSocket.ServerName + " on port " + GetSocket.Port;
          LOG.log(Level.INFO, msg);
@@ -44,6 +46,10 @@ public class GetSocket {
       return (GetSocket.socket);
    }
 
+   public static byte[] getReceive() {
+      return receive;
+   }
+
    public static void closeSocket() {
       if (GetSocket.socket != null) {
          try {
@@ -56,7 +62,7 @@ public class GetSocket {
       }
    }
 
-   public static byte[] sendReceive(Socket socket, byte[] send, byte[] receive) {
+   public static byte[] sendReceive(byte[] send) {
       byte[] received = null;
       try {
          InputStream inFromServer = null;

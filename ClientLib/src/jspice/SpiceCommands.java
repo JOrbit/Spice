@@ -20,11 +20,13 @@ public class SpiceCommands {
    private static final Logger LOG = Logger.getLogger(SpiceCommands.class.getName());
 
    private static List<SpiceCommand> commands = null;
+   
+   private static String status = null;
 
    private SpiceCommands() {
    }
 
-   public static List<SpiceCommand> getCommands() {
+   private static List<SpiceCommand> getCommands() {
       if (commands == null) {
 
          commands = new ArrayList<SpiceCommand>();
@@ -108,9 +110,8 @@ public class SpiceCommands {
       return commands;
    }
 
-   public static byte[] toBytes() {
-      byte[] bytes = null;
-
+   private static byte[] toBytes() {
+     
       List<SpiceCommand> commands = getCommands();
 
       String s = "";
@@ -119,12 +120,17 @@ public class SpiceCommands {
       }
 
       LOG.log(Level.INFO, s);
-      
+
       return s.getBytes();
    }
 
-   public static void main(String[] args) 
-   {
+   static public String process() {
+      byte[] received = GetSocket.sendReceive(SpiceCommands.toBytes());
+      SpiceCommands.status = new String(received, 0, received.length);
+      return SpiceCommands.status;
+   }
+
+   public static void main(String[] args) {
       SpiceCommands.toBytes();
    }
 }
