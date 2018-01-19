@@ -5,12 +5,10 @@
  */
 package clientmain;
 
-import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jspice.Furnsh;
 import jspice.GetSocket;
-import jspice.SpiceCommands;
 import jspice.Str2et;
 
 /**
@@ -26,17 +24,13 @@ public class ClientMain {
     */
    public static void main(String[] args) {
 
-      LOG.log(Level.INFO, "Sending list of spice commands");
-      String msg = SpiceCommands.process();
-      LOG.log(Level.INFO, "Received = " + msg);
-
       String lskFile = "D:/naif/Kernels/MEX/lsk/naif0008.tls";
       Furnsh furnshLsk = new Furnsh(lskFile);
       LOG.log(Level.INFO, "Sending spice command = " + furnshLsk);
-      msg = furnshLsk.process();
+      String msg = furnshLsk.process();
       LOG.log(Level.INFO, "Received = " + msg);
 
-      int year = 1917;
+      int year = 1017;
       String utc = null;
       for (int i = 0; i < 1000; i++) {
          utc = new String(Integer.toString(year));
