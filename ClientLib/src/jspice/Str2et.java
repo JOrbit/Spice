@@ -46,9 +46,9 @@ public class Str2et {
    @Override
    public String toString() {
       String s = Str2et.COMMAND;
-      s = s + SpiceConstants.DELIMITER;
+      s = s + GetSocket.DELIMITER;
       s = s + this.getUtc();
-      s = s + SpiceConstants.DELIMITER;
+      s = s + GetSocket.DELIMITER;
       return s;
    }
 
@@ -57,8 +57,8 @@ public class Str2et {
    }
 
    public String process() {
-      byte[] received = GetSocket.sendReceive(this.toBytes());
-      this.status = new String(received, 0, received.length);
+      GetSocket.sendReceive(this.toBytes());
+      this.status = GetSocket.receiveToString();
       this.et = Double.parseDouble(this.status);
       return this.status;
    }

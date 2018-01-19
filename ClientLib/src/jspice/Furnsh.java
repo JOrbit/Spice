@@ -5,6 +5,7 @@
  */
 package jspice;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -38,9 +39,9 @@ public class Furnsh {
    @Override
    public String toString() {
       String s = Furnsh.COMMAND;
-      s = s + SpiceConstants.DELIMITER;
+      s = s + GetSocket.DELIMITER;
       s = s + this.getFileName();
-      s = s + SpiceConstants.DELIMITER;
+      s = s + GetSocket.DELIMITER;
       return s;
    }
 
@@ -49,8 +50,9 @@ public class Furnsh {
    }
 
    public String process() {
-      byte[] received = GetSocket.sendReceive(this.toBytes());
-      this.status = new String(received, 0, received.length);
+      LOG.log(Level.INFO, "process() called state = " + this.toString());
+      GetSocket.sendReceive(this.toBytes());
+      this.status = GetSocket.receiveToString();
       return this.status;
 
    }
