@@ -25,7 +25,7 @@
  * 
  */
 int main(int argc, char** argv) {
-    printf("SERVER: Startup.\n");
+    printf("INFO: Server startup.\n");
 
     int clientFd = 0;
     int listenFd = 0;
@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
 
         struct sockaddr_storage clientaddr;
         socklen_t addrsize;
-        printf("SERVER: Waiting for client connection.\n");
+        printf("INFO: Server waiting for client connection.\n");
         clientFd = accept(listenFd, (struct sockaddr *) &clientaddr, &addrsize);
         if (clientFd == -1) {
             perror("accept");
@@ -47,14 +47,14 @@ int main(int argc, char** argv) {
             ServerProcess(clientFd);
 
             close(clientFd);
-            printf("SERVER: Child process exiting.\n");
+            printf("INFO: Server child process exiting.\n");
             exit(EXIT_SUCCESS);
         }
-        printf("SERVER: Closing clientFd.\n");
+        printf("INFO: Server closing clientFd.\n");
         close(clientFd); // parent doesn't need this
     }
 
-    printf("SERVER: Shutdown.\n");
+    printf("INFO: Server shutting down.\n");
 
    return (EXIT_SUCCESS);
 }

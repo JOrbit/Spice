@@ -9,8 +9,6 @@
 #include "ProcessSpiceCommands.h"
 #include "ProcessSpiceCommand.h"
 
-void ClearBuf(int nybtes, char* ibuf);
-
 void ServerProcess(int clientFd) {
    int NumCmds = 0;
    char* SpiceCommands[NUMCMDS] = {0};
@@ -23,37 +21,23 @@ void ServerProcess(int clientFd) {
    nbytes = Receive(clientFd, ibuf);
    NumCmds = ProcessSpiceCommands(ibuf, SpiceCommands);
    sprintf(obuf, "ServerProcess ProcessSpiceCommands called.");
-   Send(clientFd, obuf);
-   ClearBuf(nbytes, ibuf);
-   ClearBuf(strlen(obuf), obuf);
+   Send(clientFd, obuf, nbytes, ibuf);
 
    while ((nbytes = Receive(clientFd, ibuf))) {
       char* token = strtok(ibuf, DELIMITER);
       printf("INFO: ServerProcess received token = %s\n", token);
       int found = 0;
-      printf("DEBUG: ServerProcess NumCmds = %d\n", NumCmds);
       for (int i = 0; i < NumCmds; i++) {
-         printf("DEBUG: ServerProcess SpiceCommands[%d] = %s\n",
-                 i, SpiceCommands[i]);
-
          if (strcmp(token, SpiceCommands[i]) == 0) {
             printf("INFO: ServerProcess found spice command %s\n", SpiceCommands[i]);
             found = 1;
             ProcessSpiceCommand(token, i, obuf);
-            Send(clientFd, obuf);
-            ClearBuf(nbytes, ibuf);
-            ClearBuf(strlen(obuf), obuf);
+            Send(clientFd, obuf, nbytes, obuf);
          }
       }
       if (found == 0) {
          printf("WARNING: SpiceCommand %s not found!\n", token);
       }
 
-   }
-}
-
-void ClearBuf(int nbytes, char* ibuf) {
-   for (int i = 0; i < nbytes; i++) {
-      ibuf[i] = 0;
    }
 }
