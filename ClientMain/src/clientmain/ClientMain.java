@@ -26,32 +26,32 @@ public class ClientMain {
     */
    public static void main(String[] args) {
 
-      Socket socket = GetSocket.getSocket();
-      byte[] receive = new byte[GetSocket.BSIZE];
-
       LOG.log(Level.INFO, "Sending list of spice commands");
-      byte[] send = SpiceCommands.toBytes();
-      byte[] received = GetSocket.sendReceive(socket, send, receive);
-      String msg = new String(received, 0, received.length);
+      String msg = SpiceCommands.process();
       LOG.log(Level.INFO, "Received = " + msg);
 
       String lskFile = "D:/naif/Kernels/MEX/lsk/naif0008.tls";
       Furnsh furnshLsk = new Furnsh(lskFile);
       LOG.log(Level.INFO, "Sending spice command = " + furnshLsk);
-      send = furnshLsk.toBytes();
-      received = GetSocket.sendReceive(socket, send, receive);
-      msg = new String(received, 0, received.length);
+      msg = furnshLsk.process();
       LOG.log(Level.INFO, "Received = " + msg);
 
-      String utc = "2005 SEP 02 04:50:45";
-      Str2et str2etUtc = new Str2et(utc);
-      LOG.log(Level.INFO, "Sending spice command = " + str2etUtc);
-      send = str2etUtc.toBytes();
-      received = GetSocket.sendReceive(socket, send, receive);
-      msg = new String(received, 0, received.length);
-      LOG.log(Level.INFO, "Received = " + msg);
-      double et = Double.parseDouble(msg);
-      LOG.log(Level.INFO, "et = " + et);
+      int year = 1917;
+      String utc = null;
+      for (int i = 0; i < 1000; i++) {
+         utc = new String(Integer.toString(year));
+         utc = utc + " SEP 02 04:50:45";
+         LOG.log(Level.INFO, "utc = " + utc);
+         year++;
+         Str2et str2etUtc = new Str2et(utc);
+         LOG.log(Level.INFO, "Sending spice command = " + str2etUtc);
+         msg = str2etUtc.process();
+         LOG.log(Level.INFO, "Received = " + msg);
+         LOG.log(Level.INFO, "str2etUtc.getEt() = " + str2etUtc.getEt());
+
+         LOG.log(Level.INFO, "runs = " + (i + 1));
+
+      }
 
       GetSocket.closeSocket();
    }
