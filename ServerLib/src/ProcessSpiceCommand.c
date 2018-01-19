@@ -13,8 +13,6 @@
 void ProcessSpiceCommand(char* token, int ispc, char* obuf) {
 
    printf("INFO: ProcessSpiceCommand token = %s\n", token);
-   printf("INFO: ProcessSpiceCommand ispc = %d\n", ispc);
-   printf("INFO: ProcessSpiceCommand obuf = %s\n", obuf);
    if (strcmp(token, "FURNSH") == 0) {
       Furnsh(token, obuf);
    } else if (strcmp(token, "STR2ET") == 0) {
@@ -24,8 +22,5 @@ void ProcessSpiceCommand(char* token, int ispc, char* obuf) {
    } else {
       sprintf(obuf, "INFO: ProcessSpiceCommand received UNKNOWN COMMAND");
    }
-   printf("INFO: ProcessSpiceCommand token = %s\n", token);
-   printf("INFO: ProcessSpiceCommand ispc = %d\n", ispc);
-   printf("INFO: ProcessSpiceCommand obuf = %s\n", obuf);
-
+  
 }
