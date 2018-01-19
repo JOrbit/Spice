@@ -5,10 +5,19 @@
  */
 #include "SpiceSocket.h"
 
-void Send(int clientFd, char* message) {
-   int length = strlen(message);
-   printf("INFO: Send message = %s\n", message);
-   printf("INFO: Send message length = %d\n", length);
-   send(clientFd, message, length, MSG_NOSIGNAL);
+void Send(int clientFd, char* obuf, int nbytes, char* ibuf) {
+   int length = strlen(obuf);
+   printf("INFO: Send obuf = %s\n", obuf);
+   printf("INFO: Send obuf length = %d\n", length);
+   send(clientFd, obuf, length, MSG_NOSIGNAL);
+   printf("INFO: Send clearing obuf.\n");
+   for (int i = 0; i < length; i++) {
+      obuf[i] = 0;
+   }
+      printf("INFO: Send clearing ibuf.\n");
+
+   for (int i = 0; i < nbytes; i++) {
+      ibuf[i] = 0;
+   }
 }
 

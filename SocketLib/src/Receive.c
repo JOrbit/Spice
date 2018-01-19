@@ -6,9 +6,9 @@
 
 #include "SpiceSocket.h"
 
-int Receive(int clientFd, char* msg) {
-   int nbytes = recv(clientFd, msg, BSIZE, MSG_WAITALL);
+int Receive(int clientFd, char* ibuf) {
+   int nbytes = recv(clientFd, ibuf, BSIZE, MSG_WAITALL);
    printf("INFO: Receive recv returned nbytes = %d\n", nbytes);
-   printf("INFO: Receive recv returned msg = %s\n", msg);
+   printf("INFO: Receive recv returned ibuf = %s\n", ibuf);
    return nbytes;
 }

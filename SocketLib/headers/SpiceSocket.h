@@ -42,7 +42,7 @@ extern "C" {
 
    int SocketFd(struct addrinfo **addrinfoResult);
    
-   void Send(int clientFD, char* message);
+   void Send(int clientFD, char* obuf, int nbytes, char* ibuf);
    
    int Receive(int clientFd, char* massage);
 
