@@ -35,9 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/src/Bodvrd.o \
 	${OBJECTDIR}/src/Furnsh.o \
-	${OBJECTDIR}/src/GetGm.o \
 	${OBJECTDIR}/src/ProcessSpiceCommand.o \
+	${OBJECTDIR}/src/Spkezr.o \
 	${OBJECTDIR}/src/Str2et.o
 
 
@@ -67,20 +68,25 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a: ${OBJECTFILES}
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libserverlib.a
 
+${OBJECTDIR}/src/Bodvrd.o: src/Bodvrd.c 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Bodvrd.o src/Bodvrd.c
+
 ${OBJECTDIR}/src/Furnsh.o: src/Furnsh.c 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Furnsh.o src/Furnsh.c
 
-${OBJECTDIR}/src/GetGm.o: src/GetGm.c 
-	${MKDIR} -p ${OBJECTDIR}/src
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/GetGm.o src/GetGm.c
-
 ${OBJECTDIR}/src/ProcessSpiceCommand.o: src/ProcessSpiceCommand.c 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/ProcessSpiceCommand.o src/ProcessSpiceCommand.c
+
+${OBJECTDIR}/src/Spkezr.o: src/Spkezr.c 
+	${MKDIR} -p ${OBJECTDIR}/src
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/Spkezr.o src/Spkezr.c
 
 ${OBJECTDIR}/src/Str2et.o: src/Str2et.c 
 	${MKDIR} -p ${OBJECTDIR}/src

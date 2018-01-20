@@ -5,24 +5,25 @@
  */
 
 /* 
- * File:   GetGm.h
+ * File:   Spkezr.h
  * Author: owner
  *
- * Created on January 6, 2018, 5:21 PM
+ * Created on January 19, 2018, 10:42 PM
  */
 
-#ifndef GETGM_H
-#define GETGM_H
+#ifndef SPKEZR_H
+#define SPKEZR_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-void GetGm(char*, char*);
+   void Spkezr(char* token, char* obuf);
+
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* GETGM_H */
+#endif /* SPKEZR_H */
 
