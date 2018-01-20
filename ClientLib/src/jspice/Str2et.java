@@ -5,6 +5,7 @@
  */
 package jspice;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -57,8 +58,10 @@ public class Str2et {
    }
 
    public String process() {
+      LOG.log(Level.INFO, "process() sends = " + this.toString());
       GetSocket.sendReceive(this.toBytes());
       this.status = GetSocket.receiveToString();
+      LOG.log(Level.INFO, "process() received = " + this.status);
       this.et = Double.parseDouble(this.status);
       return this.status;
    }

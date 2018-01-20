@@ -12,34 +12,41 @@ import java.util.logging.Logger;
  *
  * @author owner
  */
-public class Furnsh {
+public class Bodvrd {
 
-   private static final Logger LOG = Logger.getLogger(Furnsh.class.getName());
-   private static final String COMMAND = "FURNSH";
+   private static final Logger LOG = Logger.getLogger(Bodvrd.class.getName());
+   private static final String COMMAND = "BODVRD";
 
-   private String fileName = null;
+   private String bodym = null;
+   private static String bodyProperty = "GM"; // TODO more properties
    private String status = null;
 
-   private Furnsh() {
+   private double gm = Double.NaN;
+
+   private Bodvrd() {
    }
 
-   public Furnsh(String fileName) {
-      this.fileName = fileName;
+   public Bodvrd(String bodynm) {
+      this.bodym = bodynm;
    }
 
-   public String getFileName() {
-      return fileName;
+   public String getBodym() {
+      return bodym;
    }
 
-   public void setFileName(String fileName) {
-      this.fileName = fileName;
+   public String getStatus() {
+      return status;
+   }
+
+   public double getGm() {
+      return gm;
    }
 
    @Override
    public String toString() {
-      String s = Furnsh.COMMAND;
+      String s = Bodvrd.COMMAND;
       s = s + GetSocket.DELIMITER;
-      s = s + this.getFileName();
+      s = s + this.getBodym();
       s = s + GetSocket.DELIMITER;
       return s;
    }
@@ -53,7 +60,13 @@ public class Furnsh {
       GetSocket.sendReceive(this.toBytes());
       this.status = GetSocket.receiveToString();
       LOG.log(Level.INFO, "process() received = " + this.status);
+      this.gm = Double.parseDouble(this.status);
       return this.status;
    }
 
+   public static void main(String[] args) {
+      Bodvrd bodvcd = new Bodvrd("MARS");
+      LOG.log(Level.INFO, "bodvcd = " + bodvcd.toString());
+
+   }
 }
