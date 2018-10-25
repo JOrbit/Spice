@@ -25,6 +25,8 @@ public class ClientMain {
     * @param args the command line arguments
     */
    public static void main(String[] args) {
+      
+      LOG.setLevel(Level.SEVERE);
 
       String earthSunTm = "D:/naif/Kernels/EarthSun.tm";
       Furnsh furnshEarthSunTm = new Furnsh(earthSunTm);
@@ -41,23 +43,27 @@ public class ClientMain {
          LOG.log(Level.INFO, "str2etUtc.getEt() = " + str2etUtc.getEt());
          LOG.log(Level.INFO, "runs = " + (i + 1));
       }
-      
+
       Bodvrd bodvrd = new Bodvrd("EARTH");
       bodvrd.process();
       LOG.log(Level.INFO, "bodvrd.getGm() = " + bodvrd.getGm());
-      
+
       String target = "EARTH";
+      double det = 86400.0;
       double et = 0.0;
       String refFrame = "J2000";
       String abcorr = "NONE";
       String observer = "SUN";
-      Spkezr spkezr = new Spkezr(target, et, refFrame, abcorr, observer);
-      spkezr.process();
-      for (int i = 0; i < spkezr.getStateVectors().length; i++) {
-         LOG.log(Level.INFO, "stageVectors[" + i + "] = "
-                 + spkezr.getStateVectors()[i]);
+      for (int i = 0; i < (365 * 24); i++) {
+         Spkezr spkezr = new Spkezr(target, et, refFrame, abcorr, observer);
+         spkezr.process();
+         for (int j = 0; j < spkezr.getStateVectors().length; j++) {
+            LOG.log(Level.INFO, "stageVectors[" + j + "] = "
+                    + spkezr.getStateVectors()[j]);
+         }
+         LOG.log(Level.INFO, "lt = " + spkezr.getLt());
+         et += det;
       }
-      LOG.log(Level.INFO, "lt = " + spkezr.getLt());
 
       GetSocket.closeSocket();
    }
