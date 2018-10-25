@@ -27,6 +27,7 @@ public class Bodvrd {
    }
 
    public Bodvrd(String bodynm) {
+      Bodvrd.LOG.setLevel(LogLevel.LEVEL);
       this.bodym = bodynm;
    }
 

@@ -37,6 +37,7 @@ public class Spkezr {
 
    public Spkezr(String targ, double et, String ref, String abcorr,
            String obs) {
+      Spkezr.LOG.setLevel(LogLevel.LEVEL);
       this.target = targ;
       this.et = et;
       this.refFrame = ref;

@@ -25,6 +25,7 @@ public class Str2et {
    }
 
    public Str2et(String fileName) {
+      Str2et.LOG.setLevel(LogLevel.LEVEL);
       this.utc = fileName;
       this.status = null;
       this.et = Double.NaN;

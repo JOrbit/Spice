@@ -36,6 +36,7 @@ public class GetSocket {
    private static byte[] receive = new byte[BSIZE];
 
    private static Socket getSocket() {
+      GetSocket.LOG.setLevel(LogLevel.LEVEL);
       if (GetSocket.socket == null) {
          String msg = "Connecting to " + GetSocket.ServerName + " on port " + GetSocket.Port;
          LOG.log(Level.INFO, msg);

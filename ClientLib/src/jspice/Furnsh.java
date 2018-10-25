@@ -24,6 +24,7 @@ public class Furnsh {
    }
 
    public Furnsh(String fileName) {
+      Furnsh.LOG.setLevel(LogLevel.LEVEL);
       this.fileName = fileName;
    }
 
