@@ -20,6 +20,8 @@
 int main(int argc, char** argv) {
    
    printf("SpiceOrbitalElements\n");
+   
+   printf("Load data.\n");
 
    return (EXIT_SUCCESS);
 }
