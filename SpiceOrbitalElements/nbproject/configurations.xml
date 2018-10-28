@@ -37,9 +37,15 @@
       <compileType>
         <cTool>
           <incDir>
-            <pElem>main.c</pElem>
+            <pElem>D:/naif/PCCYGWINgCC64bit/cspice/include</pElem>
           </incDir>
         </cTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>D:/naif/PCCYGWINgCC64bit/cspice/lib/cspice.a</linkerLibFileItem>
+            <linkerLibFileItem>D:/naif/PCCYGWINgCC64bit/cspice/lib/csupport.a</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
