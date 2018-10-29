@@ -40,7 +40,7 @@ int main(int argc, char** argv) {
    ConstSpiceChar* target = "EARTH";
 
    /*
-      load kernels: LSK, MEX trajectory SPK, and gravity PCK 
+      load kernels: LSK, Solar system SPK, and gravity PCK 
     */
    furnsh_c("D:/naif/Kernels/Generic/lsk/naif0011.tls");
    furnsh_c("D:/naif/Kernels/Generic/spk/planets/de432s.bsp");
@@ -56,35 +56,38 @@ int main(int argc, char** argv) {
     */
 
    str2et_c(strDate, &et);
+   
    printf("UTC       = %s     \n", strDate);
-   printf("ET        = %20.6f \n", et);
+   printf("ET        = %20.10f \n", et);
 
    /*
-      compute state of MEX at given UTC 
+      compute state of Target at given UTC 
     */
    spkezr_c(target, et, frame, "NONE", observer,
            state, &lt);
-
-   printf(" X        = %20.6f\n", state[0]);
-   printf(" Y        = %20.6f\n", state[1]);
-   printf(" Z        = %20.6f\n", state[2]);
-   printf("VX        = %20.6f\n", state[3]);
-   printf("VY        = %20.6f\n", state[4]);
-   printf("VZ        = %20.6f\n", state[5]);
+   
+   printf("Target %s State Variables %s Reference Frame.\n", target, frame);
+   printf(" X(km)           = %20.10f\n", state[0]);
+   printf(" Y(km)           = %20.10f\n", state[1]);
+   printf(" Z(km)           = %20.10f\n", state[2]);
+   printf("VX(km/s)         = %20.10f\n", state[3]);
+   printf("VY(km/s)         = %20.10f\n", state[4]);
+   printf("VZ(km/s)         = %20.10f\n", state[5]);
 
    /*
           compute orbital elements 
     */
    oscelt_c(state, et, gm, elts);
 
-   printf("elts[0]   = %20.6f\n", elts[0]);
-   printf("elts[1]        = %20.6f\n", elts[1]);
-   printf("elts[2]        = %20.6f\n", elts[2]);
-   printf("elts[3]        = %20.6f\n", elts[3]);
-   printf("elts[4]        = %20.6f\n", elts[4]);
-   printf("elts[5]        = %20.6f\n", elts[5]);
-   printf("elts[6]        = %20.6f\n", elts[6]);
-   printf("elts[7]        = %20.6f\n", elts[7]);
+   printf("Target %s Orbital Elements.\n", target);
+   printf("Perifocal distance              rp(km)            = %20.10f\n", elts[0]);
+   printf("Eccentricity                    ecc               = %20.10f\n", elts[1]);
+   printf("Inclination                     inc(rad)          = %20.10f\n", elts[2]);
+   printf("Longitude of the ascending node lnode(rad)        = %20.10f\n", elts[3]);
+   printf("Argument of periapsis           argp(rad)         = %20.10f\n", elts[4]);
+   printf("Mean anomaly at epoch           m0(rad)           = %20.10f\n", elts[5]);
+   printf("Epoch                           t0(s)             = %20.10f\n", elts[6]);
+   printf("Gravitational parameter         mu(km3/s2)        = %20.10f\n", elts[7]);
 
 
    return (EXIT_SUCCESS);
