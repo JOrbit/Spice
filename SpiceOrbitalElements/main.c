@@ -18,9 +18,11 @@
 
 void printDateTime(ConstSpiceChar* utc, ConstSpiceDouble et);
 
-void printState(ConstSpiceChar* frame, ConstSpiceChar* target,
+void printState(ConstSpiceChar* utc, ConstSpiceDouble et,
+        ConstSpiceChar* frame, ConstSpiceChar* target,
         ConstSpiceDouble * state);
-void printOrbitalElements(ConstSpiceChar* target, ConstSpiceDouble* elts);
+void printOrbitalElements(ConstSpiceChar* utc, ConstSpiceDouble et,
+        ConstSpiceChar* target, ConstSpiceDouble* elts);
 
 
 #define GM "GM"
@@ -50,7 +52,9 @@ int main(int argc, char** argv) {
       "2000 OCT 01 12:00:00",
       "2001 JAN 01 12:00:00",
    };
- 
+
+   ConstSpiceChar * outc[4];
+
    SpiceInt n;
    SpiceDouble gm;
    SpiceDouble et[NUTC];
@@ -60,7 +64,7 @@ int main(int argc, char** argv) {
    SpiceDouble lt[NUTC];
    SpiceDouble olt[NUTC - 1];
    SpiceDouble elts[NUTC][NELTS];
-   SpiceDouble pelts[NUTC - 1][NELTS];
+   SpiceDouble oelts[NUTC - 1][NELTS];
 
    /*
       load kernels: LSK, Solar system SPK, and gravity PCK 
@@ -92,13 +96,35 @@ int main(int argc, char** argv) {
       spkezr_c(target, et[i], frame, "NONE", observer,
               state[i], &lt[i]);
 
-      printState(frame, target, state[i]);
+      printState(utc[i], et[i], frame, target, state[i]);
 
       /*
              compute orbital elements 
        */
       oscelt_c(state[i], et[i], gm, elts[i]);
-      printOrbitalElements(target, elts[i]);
+      printOrbitalElements(utc[i], et[i], target, elts[i]);
+
+      if (i > 0) {
+         int o = i - 1;
+         outc[o] = utc[i];
+         oet[o] = et[i];
+         for (int j = 0; j < NSTATES; j++) {
+            ostate[o][j] = state[i][j];
+         }
+
+         for (int k = 0; k < NELTS; k++) {
+            oelts[o][k] = elts[i][k];
+         }
+
+         SpiceDouble nstate[NSTATES];
+         SpiceDouble diff[NSTATES];
+         conics_c(oelts[o], et[i], nstate);
+         vsubg_c(nstate, state[i], NSTATES, diff);
+
+         printf("Perturbation in x, dx/dt = %20.10f %20.10f\n", diff[0], diff[3]);
+         printf("                y, dy/dt = %20.10f %20.10f\n", diff[1], diff[4]);
+         printf("                z, dz/dt = %20.10f %20.10f\n", diff[2], diff[5]);
+      }
 
    }
 
@@ -111,8 +137,10 @@ void printDateTime(ConstSpiceChar* utc, ConstSpiceDouble et) {
    printf("ET        = %20.10f \n", et);
 }
 
-void printState(ConstSpiceChar* frame, ConstSpiceChar* target,
+void printState(ConstSpiceChar* utc, ConstSpiceDouble et,
+        ConstSpiceChar* frame, ConstSpiceChar* target,
         ConstSpiceDouble* state) {
+   printDateTime(utc, et);
    printf("Target %s State Variables %s Reference Frame.\n", target, frame);
    printf(" X(km)           = %20.10f\n", state[0]);
    printf(" Y(km)           = %20.10f\n", state[1]);
@@ -122,7 +150,8 @@ void printState(ConstSpiceChar* frame, ConstSpiceChar* target,
    printf("VZ(km/s)         = %20.10f\n", state[5]);
 }
 
-void printOrbitalElements(ConstSpiceChar* target, ConstSpiceDouble* elts) {
+void printOrbitalElements(ConstSpiceChar* utc, ConstSpiceDouble et, ConstSpiceChar* target, ConstSpiceDouble* elts) {
+   printDateTime(utc, et);
    printf("Target %s Orbital Elements.\n", target);
    printf("Perifocal distance              rp(km)            = %20.10f\n", elts[0]);
    printf("Eccentricity                    ecc               = %20.10f\n", elts[1]);
