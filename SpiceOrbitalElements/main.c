@@ -24,6 +24,9 @@ void printOrbitalElements(ConstSpiceChar* target, ConstSpiceDouble* elts);
 
 
 #define GM "GM"
+ConstSpiceInt NSTATES = 6;
+ConstSpiceInt NELTS = 8;
+ConstSpiceInt NUTC = 5;
 
 /*
  * 
@@ -36,17 +39,28 @@ int main(int argc, char** argv) {
    ConstSpiceChar* spkFile = "D:/naif/Kernels/Generic/spk/planets/de432s.bsp";
    ConstSpiceChar* pckFile = "D:/naif/Kernels/Generic/pck/gm_de431.tpc";
 
-   ConstSpiceChar* utc = "2000 JAN 01 12:00:00";
    ConstSpiceChar* observer = "SUN";
    ConstSpiceChar* frame = "J2000";
    ConstSpiceChar* target = "EARTH";
 
+   ConstSpiceChar * utc[] = {
+      "2000 JAN 01 12:00:00",
+      "2000 APR 01 12:00:00",
+      "2000 JUL 01 12:00:00",
+      "2000 OCT 01 12:00:00",
+      "2001 JAN 01 12:00:00",
+   };
+ 
    SpiceInt n;
    SpiceDouble gm;
-   SpiceDouble et;
-   SpiceDouble state[6];
-   SpiceDouble lt;
-   SpiceDouble elts[8];
+   SpiceDouble et[NUTC];
+   SpiceDouble oet[NUTC - 1];
+   SpiceDouble state[NUTC][NSTATES];
+   SpiceDouble ostate[NUTC - 1][NSTATES];
+   SpiceDouble lt[NUTC];
+   SpiceDouble olt[NUTC - 1];
+   SpiceDouble elts[NUTC][NELTS];
+   SpiceDouble pelts[NUTC - 1][NELTS];
 
    /*
       load kernels: LSK, Solar system SPK, and gravity PCK 
@@ -66,23 +80,27 @@ int main(int argc, char** argv) {
       convert UTC to ET 
     */
 
-   str2et_c(utc, &et);
-   printDateTime(utc, et);
+   for (int i = 0; i < NUTC; i++) {
+
+      str2et_c(utc[i], &et[i]);
+      printDateTime(utc[i], et[i]);
 
 
-   /*
-      compute state of Target at given UTC 
-    */
-   spkezr_c(target, et, frame, "NONE", observer,
-           state, &lt);
+      /*
+         compute state of Target at given UTC 
+       */
+      spkezr_c(target, et[i], frame, "NONE", observer,
+              state[i], &lt[i]);
 
-   printState(frame, target, state);
+      printState(frame, target, state[i]);
 
-   /*
-          compute orbital elements 
-    */
-   oscelt_c(state, et, gm, elts);
-   printOrbitalElements(target, elts);
+      /*
+             compute orbital elements 
+       */
+      oscelt_c(state[i], et[i], gm, elts[i]);
+      printOrbitalElements(target, elts[i]);
+
+   }
 
 
    return (EXIT_SUCCESS);
