@@ -16,19 +16,17 @@
 
 #include "SpiceUsr.h"
 
-void printDateTime(ConstSpiceChar* utc, ConstSpiceDouble et);
+void printDateTime(ConstSpiceDouble et);
 
-void printState(ConstSpiceChar* utc, ConstSpiceDouble et,
-        ConstSpiceChar* frame, ConstSpiceChar* target,
-        ConstSpiceDouble * state);
+void printState(ConstSpiceDouble et,
+        ConstSpiceChar* target, ConstSpiceChar* frame, ConstSpiceChar* observer,
+        ConstSpiceDouble* state);
 void printOrbitalElements(ConstSpiceChar* utc, ConstSpiceDouble et,
         ConstSpiceChar* target, ConstSpiceDouble* elts);
 
 
 #define GM "GM"
 ConstSpiceInt NSTATES = 6;
-ConstSpiceInt NELTS = 8;
-ConstSpiceInt NUTC = 5;
 
 /*
  * 
@@ -43,28 +41,29 @@ int main(int argc, char** argv) {
 
    ConstSpiceChar* observer = "SUN";
    ConstSpiceChar* frame = "J2000";
-   ConstSpiceChar* target = "EARTH";
+   ConstSpiceChar* target = "VENUS";
 
-   ConstSpiceChar * utc[] = {
+   /*
       "2000 JAN 01 12:00:00",
       "2000 APR 01 12:00:00",
       "2000 JUL 01 12:00:00",
       "2000 OCT 01 12:00:00",
       "2001 JAN 01 12:00:00",
-   };
+      "2000 OCT 01 12:00:00"
+    */
 
-   ConstSpiceChar * outc[4];
 
-   SpiceInt n;
+
+   SpiceInt igm;
    SpiceDouble gm;
-   SpiceDouble et[NUTC];
-   SpiceDouble oet[NUTC - 1];
-   SpiceDouble state[NUTC][NSTATES];
-   SpiceDouble ostate[NUTC - 1][NSTATES];
-   SpiceDouble lt[NUTC];
-   SpiceDouble olt[NUTC - 1];
-   SpiceDouble elts[NUTC][NELTS];
-   SpiceDouble oelts[NUTC - 1][NELTS];
+   SpiceDouble et1;
+   SpiceDouble et2;
+   SpiceDouble state1[NSTATES];
+   SpiceDouble state2[NSTATES];
+   SpiceDouble lt;
+   SpiceDouble elts1[SPICE_OSCLTX_NELTS];
+   SpiceDouble elts2[SPICE_OSCLTX_NELTS];
+   SpiceDouble diff[NSTATES];
 
    /*
       load kernels: LSK, Solar system SPK, and gravity PCK 
@@ -78,29 +77,31 @@ int main(int argc, char** argv) {
    /*
       retrieve GM for SUN 
     */
-   bodvrd_c(observer, GM, 1, &n, &gm);
+   bodvrd_c(observer, GM, 1, &igm, &gm);
 
    /*
       convert UTC to ET 
     */
 
-   for (int i = 0; i < NUTC; i++) {
+   str2et_c("2000 JAN 01 12:00:00", &et1);
+   str2et_c("2001 JAN 01 12:00:00", &et2);
 
-      str2et_c(utc[i], &et[i]);
-      printDateTime(utc[i], et[i]);
+   /*
+      compute state of Target at given UTC 
+    */
+   spkezr_c(target, et1, frame, "NONE", observer,
+           state1, &lt);
+   printState(et1, target, frame, observer, state1);
 
 
-      /*
-         compute state of Target at given UTC 
-       */
-      spkezr_c(target, et[i], frame, "NONE", observer,
-              state[i], &lt[i]);
+   spkezr_c(target, et2, frame, "NONE", observer,
+           state2, &lt);
+   printState(et2, target, frame, observer, state2);
 
-      printState(utc[i], et[i], frame, target, state[i]);
 
       /*
              compute orbital elements 
-       */
+      
       oscelt_c(state[i], et[i], gm, elts[i]);
       printOrbitalElements(utc[i], et[i], target, elts[i]);
 
@@ -116,31 +117,28 @@ int main(int argc, char** argv) {
             oelts[o][k] = elts[i][k];
          }
 
-         SpiceDouble nstate[NSTATES];
-         SpiceDouble diff[NSTATES];
-         conics_c(oelts[o], et[i], nstate);
-         vsubg_c(nstate, state[i], NSTATES, diff);
 
-         printf("Perturbation in x, dx/dt = %20.10f %20.10f\n", diff[0], diff[3]);
-         printf("                y, dy/dt = %20.10f %20.10f\n", diff[1], diff[4]);
-         printf("                z, dz/dt = %20.10f %20.10f\n", diff[2], diff[5]);
-      }
-
-   }
-
+         conics_c(oelts[o], et[i], pstate);
+         vsubg_c(pstate, state[i], NSTATES, diff);
+       */
 
    return (EXIT_SUCCESS);
 }
 
-void printDateTime(ConstSpiceChar* utc, ConstSpiceDouble et) {
+void printDateTime(ConstSpiceDouble et) {
+   SpiceChar utc[23];
+   et2utc_c(et, "C", 3, 23, utc);
+
    printf("UTC       = %s     \n", utc);
    printf("ET        = %20.10f \n", et);
 }
 
-void printState(ConstSpiceChar* utc, ConstSpiceDouble et,
-        ConstSpiceChar* frame, ConstSpiceChar* target,
+void printState(ConstSpiceDouble et,
+        ConstSpiceChar* target, ConstSpiceChar* frame, ConstSpiceChar* observer,
         ConstSpiceDouble* state) {
-   printDateTime(utc, et);
+   printf("State of %s in frame %s from observer %s as of:\n",
+           target, frame, observer);
+   printDateTime(et);
    printf("Target %s State Variables %s Reference Frame.\n", target, frame);
    printf(" X(km)           = %20.10f\n", state[0]);
    printf(" Y(km)           = %20.10f\n", state[1]);
@@ -151,7 +149,7 @@ void printState(ConstSpiceChar* utc, ConstSpiceDouble et,
 }
 
 void printOrbitalElements(ConstSpiceChar* utc, ConstSpiceDouble et, ConstSpiceChar* target, ConstSpiceDouble* elts) {
-   printDateTime(utc, et);
+   printDateTime(et);
    printf("Target %s Orbital Elements.\n", target);
    printf("Perifocal distance              rp(km)            = %20.10f\n", elts[0]);
    printf("Eccentricity                    ecc               = %20.10f\n", elts[1]);
