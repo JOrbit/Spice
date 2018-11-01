@@ -16,24 +16,15 @@
 
 #include "SpiceUsr.h"
 
-void printDateTime(ConstSpiceDouble et);
+#include "printEt.h"
+#include "printState.h"
+#include "printEltsX.h"
 
-void printState(ConstSpiceDouble et,
-        ConstSpiceChar* target, ConstSpiceChar* frame, ConstSpiceChar* observer,
-        ConstSpiceDouble* state);
-void printOrbitalElements(ConstSpiceDouble et,
-        ConstSpiceChar* target, ConstSpiceChar* frame, ConstSpiceChar* observer,
-        ConstSpiceDouble* elts);
 
 
 #define GM "GM"
 
-ConstSpiceInt NSTATES = 6;
 
-ConstSpiceDouble PI = 3.14159265359;
-
-
-SpiceDouble r2d(SpiceDouble rad);
 
 /*
  * 
@@ -102,7 +93,7 @@ int main(int argc, char** argv) {
            state1, &lt);
    printState(et1, target, frame, observer, state1);
    oscltx_c(state1, et1, gm, elts1);
-   printOrbitalElements(et1, target, frame, observer, elts1);
+   printEltsX(et1, target, frame, observer, elts1);
    
    et2 = et1 + 5 * elts1[10];
 
@@ -112,7 +103,7 @@ int main(int argc, char** argv) {
            state2, &lt);
    printState(et2, target, frame, observer, state2);
    oscltx_c(state2, et2, gm, elts2);
-   printOrbitalElements(et2, target, frame, observer, elts2);
+   printEltsX(et2, target, frame, observer, elts2);
 
    vsubg_c(state2, state1, NSTATES, diff);
    printf("Perturbation in x, dx/dt = %e %e\n", diff[0], diff[3]);
@@ -129,55 +120,3 @@ int main(int argc, char** argv) {
 
    return (EXIT_SUCCESS);
 }
-
-void printDateTime(ConstSpiceDouble et) {
-   SpiceChar utc[23];
-   et2utc_c(et, "C", 3, 23, utc);
-
-   printf("UTC       = %s     \n", utc);
-   printf("ET        = %20.10f \n", et);
-}
-
-void printState(ConstSpiceDouble et,
-        ConstSpiceChar* target, ConstSpiceChar* frame, ConstSpiceChar* observer,
-        ConstSpiceDouble* state) {
-   printf("State of %s in frame %s from observer %s as of:\n",
-           target, frame, observer);
-   printDateTime(et);
-   printf("Target %s State Variables %s Reference Frame.\n", target, frame);
-   printf(" X(km)           = %20.10f\n", state[0]);
-   printf(" Y(km)           = %20.10f\n", state[1]);
-   printf(" Z(km)           = %20.10f\n", state[2]);
-   printf("VX(km/s)         = %20.10f\n", state[3]);
-   printf("VY(km/s)         = %20.10f\n", state[4]);
-   printf("VZ(km/s)         = %20.10f\n", state[5]);
-}
-
-void printOrbitalElements(ConstSpiceDouble et,
-        ConstSpiceChar* target, ConstSpiceChar* frame, ConstSpiceChar* observer,
-        ConstSpiceDouble* elts) {
-   printf("Orbital Elements of %s in frame %s from observer %s as of:\n",
-           target, frame, observer);
-   printDateTime(et);
-   printf("Perifocal distance              rp(km)            = %20.10f\n", elts[0]);
-   printf("Eccentricity                    ecc               = %20.10f\n", elts[1]);
-   printf("Inclination                     inc(rad)          = %20.10f\n", elts[2]);
-   printf("Inclination                     inc(deg)          = %20.10f\n", r2d(elts[2]));
-   printf("Longitude of the ascending node lnode(rad)        = %20.10f\n", elts[3]);
-   printf("Longitude of the ascending node lnode(deg)        = %20.10f\n", r2d(elts[3]));
-   printf("Argument of periapsis           argp(rad)         = %20.10f\n", elts[4]);
-   printf("Argument of periapsis           argp(deg)         = %20.10f\n", r2d(elts[4]));
-   printf("Mean anomaly at epoch           m0(rad)           = %20.10f\n", elts[5]);
-   printf("Mean anomaly at epoch           m0(deg)           = %20.10f\n", r2d(elts[5]));
-   printf("Epoch                           t0(s)             = %20.10f\n", elts[6]);
-   printf("Gravitational parameter         mu(km3/s2)        = %20.10f\n", elts[7]);
-   printf("True anomaly at epoch           nu(rad)           = %20.10f\n", elts[8]);
-   printf("True anomaly at epoch           nu(deg)           = %20.10f\n", r2d(elts[8]));
-   printf("Semi-major axis                 A(km)             = %20.10f\n", elts[9]);
-   printf("Orbital period                  TAU(s)            = %20.10f\n", elts[10]);
-}
-
-SpiceDouble r2d(SpiceDouble rad) {
-   return (rad * 360.0 / (2.0 * PI));
-}
-

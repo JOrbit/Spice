@@ -4,6 +4,10 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printEltsX.h</itemPath>
+      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printEt.h</itemPath>
+      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printState.h</itemPath>
+      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/r2d.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -13,6 +17,10 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.c</itemPath>
+      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printElts.c</itemPath>
+      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printEt.c</itemPath>
+      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printState.c</itemPath>
+      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/r2d.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -47,6 +55,46 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printElts.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printEltsX.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printEt.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printEt.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printState.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/r2d.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/r2d.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
@@ -70,6 +118,46 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printElts.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printEltsX.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printEt.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printEt.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printState.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/r2d.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/r2d.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
