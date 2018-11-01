@@ -27,12 +27,19 @@ void printOrbitalElements(ConstSpiceDouble et,
 
 
 #define GM "GM"
+
 ConstSpiceInt NSTATES = 6;
+
+ConstSpiceDouble PI = 3.14159265359;
+
+
+SpiceDouble r2d(SpiceDouble rad);
 
 /*
  * 
  */
 int main(int argc, char** argv) {
+
 
    printf("SpiceOrbitalElements\n");
 
@@ -41,7 +48,7 @@ int main(int argc, char** argv) {
    ConstSpiceChar* pckFile = "D:/naif/Kernels/Generic/pck/gm_de431.tpc";
 
    ConstSpiceChar* observer = "SUN";
-   ConstSpiceChar* frame = "J2000";
+   ConstSpiceChar* frame = "ECLIPJ2000"; //"J2000";
    ConstSpiceChar* target = "EARTH";
 
    /*
@@ -86,7 +93,7 @@ int main(int argc, char** argv) {
     */
 
    str2et_c("2000 SEP 22 17:27:00", &et1);
-   str2et_c("2001 SEP 22 23:05:00", &et2);
+   //str2et_c("2001 SEP 22 23:05:00", &et2);
 
    /*
       compute state of Target at given UTC 
@@ -94,15 +101,17 @@ int main(int argc, char** argv) {
    spkezr_c(target, et1, frame, "NONE", observer,
            state1, &lt);
    printState(et1, target, frame, observer, state1);
-   oscelt_c(state1, et1, gm, elts1);
+   oscltx_c(state1, et1, gm, elts1);
    printOrbitalElements(et1, target, frame, observer, elts1);
+   
+   et2 = et1 + 5 * elts1[10];
 
 
 
    spkezr_c(target, et2, frame, "NONE", observer,
            state2, &lt);
    printState(et2, target, frame, observer, state2);
-   oscelt_c(state2, et2, gm, elts2);
+   oscltx_c(state2, et2, gm, elts2);
    printOrbitalElements(et2, target, frame, observer, elts2);
 
    vsubg_c(state2, state1, NSTATES, diff);
@@ -111,8 +120,9 @@ int main(int argc, char** argv) {
    printf("                z, dz/dt = %e %e\n", diff[2], diff[5]);
 
    conics_c(elts1, et2, pstate);
-   vsubg_c(pstate, state1, NSTATES, diff);
    printState(et2, target, frame, observer, pstate);
+
+   vsubg_c(pstate, state1, NSTATES, diff);
    printf("Perturbation in x, dx/dt = %e %e\n", diff[0], diff[3]);
    printf("                y, dy/dt = %e %e\n", diff[1], diff[4]);
    printf("                z, dz/dt = %e %e\n", diff[2], diff[5]);
@@ -152,9 +162,22 @@ void printOrbitalElements(ConstSpiceDouble et,
    printf("Perifocal distance              rp(km)            = %20.10f\n", elts[0]);
    printf("Eccentricity                    ecc               = %20.10f\n", elts[1]);
    printf("Inclination                     inc(rad)          = %20.10f\n", elts[2]);
+   printf("Inclination                     inc(deg)          = %20.10f\n", r2d(elts[2]));
    printf("Longitude of the ascending node lnode(rad)        = %20.10f\n", elts[3]);
+   printf("Longitude of the ascending node lnode(deg)        = %20.10f\n", r2d(elts[3]));
    printf("Argument of periapsis           argp(rad)         = %20.10f\n", elts[4]);
+   printf("Argument of periapsis           argp(deg)         = %20.10f\n", r2d(elts[4]));
    printf("Mean anomaly at epoch           m0(rad)           = %20.10f\n", elts[5]);
+   printf("Mean anomaly at epoch           m0(deg)           = %20.10f\n", r2d(elts[5]));
    printf("Epoch                           t0(s)             = %20.10f\n", elts[6]);
    printf("Gravitational parameter         mu(km3/s2)        = %20.10f\n", elts[7]);
+   printf("True anomaly at epoch           nu(rad)           = %20.10f\n", elts[8]);
+   printf("True anomaly at epoch           nu(deg)           = %20.10f\n", r2d(elts[8]));
+   printf("Semi-major axis                 A(km)             = %20.10f\n", elts[9]);
+   printf("Orbital period                  TAU(s)            = %20.10f\n", elts[10]);
 }
+
+SpiceDouble r2d(SpiceDouble rad) {
+   return (rad * 360.0 / (2.0 * PI));
+}
+
