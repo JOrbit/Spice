@@ -19,12 +19,11 @@
 #include "printEt.h"
 #include "printState.h"
 #include "printEltsX.h"
+#include "printStateDiff.h"
 
 
 
 #define GM "GM"
-
-
 
 /*
  * 
@@ -63,7 +62,6 @@ int main(int argc, char** argv) {
    SpiceDouble elts1[SPICE_OSCLTX_NELTS];
    SpiceDouble elts2[SPICE_OSCLTX_NELTS];
    SpiceDouble pstate[NSTATES];
-   SpiceDouble diff[NSTATES];
 
    /*
       load kernels: LSK, Solar system SPK, and gravity PCK 
@@ -94,7 +92,7 @@ int main(int argc, char** argv) {
    printState(et1, target, frame, observer, state1);
    oscltx_c(state1, et1, gm, elts1);
    printEltsX(et1, target, frame, observer, elts1);
-   
+
    et2 = et1 + 5 * elts1[10];
 
 
@@ -102,21 +100,14 @@ int main(int argc, char** argv) {
    spkezr_c(target, et2, frame, "NONE", observer,
            state2, &lt);
    printState(et2, target, frame, observer, state2);
+
    oscltx_c(state2, et2, gm, elts2);
    printEltsX(et2, target, frame, observer, elts2);
 
-   vsubg_c(state2, state1, NSTATES, diff);
-   printf("Perturbation in x, dx/dt = %e %e\n", diff[0], diff[3]);
-   printf("                y, dy/dt = %e %e\n", diff[1], diff[4]);
-   printf("                z, dz/dt = %e %e\n", diff[2], diff[5]);
-
    conics_c(elts1, et2, pstate);
-   printState(et2, target, frame, observer, pstate);
-
-   vsubg_c(pstate, state1, NSTATES, diff);
-   printf("Perturbation in x, dx/dt = %e %e\n", diff[0], diff[3]);
-   printf("                y, dy/dt = %e %e\n", diff[1], diff[4]);
-   printf("                z, dz/dt = %e %e\n", diff[2], diff[5]);
+   printStateDiff(target, frame, observer,
+           et1, et2,
+           state1, pstate);
 
    return (EXIT_SUCCESS);
 }

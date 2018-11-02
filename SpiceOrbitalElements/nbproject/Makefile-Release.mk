@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/16a1d3b5/printElts.o \
 	${OBJECTDIR}/_ext/16a1d3b5/printEt.o \
 	${OBJECTDIR}/_ext/16a1d3b5/printState.o \
+	${OBJECTDIR}/_ext/16a1d3b5/printStateDiff.o \
 	${OBJECTDIR}/_ext/16a1d3b5/r2d.o \
 	${OBJECTDIR}/main.o
 
@@ -80,6 +81,11 @@ ${OBJECTDIR}/_ext/16a1d3b5/printState.o: /cygdrive/D/JOrbit/Spice/SpiceOrbitalEl
 	${MKDIR} -p ${OBJECTDIR}/_ext/16a1d3b5
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/16a1d3b5/printState.o /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/printState.c
+
+${OBJECTDIR}/_ext/16a1d3b5/printStateDiff.o: /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/printStateDiff.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/16a1d3b5
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/16a1d3b5/printStateDiff.o /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/printStateDiff.c
 
 ${OBJECTDIR}/_ext/16a1d3b5/r2d.o: /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/r2d.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/16a1d3b5

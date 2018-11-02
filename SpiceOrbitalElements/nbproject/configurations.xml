@@ -7,6 +7,7 @@
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printEltsX.h</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printEt.h</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printState.h</itemPath>
+      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printStateDiff.h</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/r2d.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -20,6 +21,7 @@
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printElts.c</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printEt.c</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printState.c</itemPath>
+      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printStateDiff.c</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/r2d.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -85,6 +87,16 @@
             tool="3"
             flavor2="0">
       </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printStateDiff.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printStateDiff.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
       <item path="D:/JOrbit/Spice/SpiceOrbitalElements/r2d.c"
             ex="false"
             tool="0"
@@ -144,6 +156,16 @@
             flavor2="0">
       </item>
       <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printState.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printStateDiff.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printStateDiff.h"
             ex="false"
             tool="3"
             flavor2="0">
