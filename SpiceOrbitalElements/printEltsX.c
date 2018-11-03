@@ -9,6 +9,7 @@
 
 #include "printEt.h"
 #include "printEltsX.h"
+#include "r2d.h"
 
 void printEltsX(ConstSpiceDouble et,
         ConstSpiceChar* target, ConstSpiceChar* frame, ConstSpiceChar* observer,

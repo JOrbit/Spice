@@ -41,16 +41,6 @@ int main(int argc, char** argv) {
    ConstSpiceChar* frame = "ECLIPJ2000"; //"J2000";
    ConstSpiceChar* target = "EARTH";
 
-   /*
-      "2000 JAN 01 12:00:00",
-      "2000 APR 01 12:00:00",
-      "2000 JUL 01 12:00:00",
-      "2000 OCT 01 12:00:00",
-      "2001 JAN 01 12:00:00",
-      "2000 OCT 01 12:00:00"
-    */
-
-
 
    SpiceInt igm;
    SpiceDouble gm;
@@ -81,33 +71,42 @@ int main(int argc, char** argv) {
       convert UTC to ET 
     */
 
-   str2et_c("2000 SEP 22 17:27:00", &et1);
-   //str2et_c("2001 SEP 22 23:05:00", &et2);
-
-   /*
-      compute state of Target at given UTC 
-    */
-   spkezr_c(target, et1, frame, "NONE", observer,
-           state1, &lt);
-   printState(et1, target, frame, observer, state1);
-   oscltx_c(state1, et1, gm, elts1);
-   printEltsX(et1, target, frame, observer, elts1);
-
-   et2 = et1 + 5 * elts1[10];
+   str2et_c("2000 JAN 01 12:00:00", &et1);
 
 
 
-   spkezr_c(target, et2, frame, "NONE", observer,
-           state2, &lt);
-   printState(et2, target, frame, observer, state2);
+   for (int i = 0; i < 20; i++) {
+      //
+      // Retrieve state of Target at given ET
+      //
+      spkezr_c(target, et1, frame, "NONE", observer,
+              state1, &lt);
+      printState(et1, target, frame, observer, state1);
+      oscltx_c(state1, et1, gm, elts1);
+      printEltsX(et1, target, frame, observer, elts1);
+      //
+      // Retrieve state of Target at and ET + the orbital period 
+      // from the previous target
+      //
+      et2 = et1 + elts1[10];
+      spkezr_c(target, et2, frame, "NONE", observer,
+              state2, &lt);
+      printState(et2, target, frame, observer, state2);
+      //
+      // Calculate a state from a previous one
+      //
+      printf("Perturb state1 to pstate using oscltx_x and find diff.\n");
+      oscltx_c(state2, et2, gm, elts2);
+      printEltsX(et2, target, frame, observer, elts2);
+      conics_c(elts1, et2, pstate);
+      printStateDiff(target, frame, observer,
+              et1, et2,
+              state1, pstate);
 
-   oscltx_c(state2, et2, gm, elts2);
-   printEltsX(et2, target, frame, observer, elts2);
+      et1 = et2;
 
-   conics_c(elts1, et2, pstate);
-   printStateDiff(target, frame, observer,
-           et1, et2,
-           state1, pstate);
+
+   }
 
    return (EXIT_SUCCESS);
 }

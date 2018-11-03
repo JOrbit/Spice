@@ -35,7 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/16a1d3b5/printElts.o \
+	${OBJECTDIR}/_ext/16a1d3b5/printEltsX.o \
 	${OBJECTDIR}/_ext/16a1d3b5/printEt.o \
 	${OBJECTDIR}/_ext/16a1d3b5/printState.o \
 	${OBJECTDIR}/_ext/16a1d3b5/printStateDiff.o \
@@ -67,10 +67,10 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spiceorbitalelements.exe: ${OBJECTFIL
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spiceorbitalelements ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/16a1d3b5/printElts.o: /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/printElts.c 
+${OBJECTDIR}/_ext/16a1d3b5/printEltsX.o: /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/printEltsX.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/16a1d3b5
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/16a1d3b5/printElts.o /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/printElts.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/16a1d3b5/printEltsX.o /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/printEltsX.c
 
 ${OBJECTDIR}/_ext/16a1d3b5/printEt.o: /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/printEt.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/16a1d3b5

@@ -18,7 +18,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.c</itemPath>
-      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printElts.c</itemPath>
+      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printEltsX.c</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printEt.c</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printState.c</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printStateDiff.c</itemPath>
@@ -57,7 +57,7 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printElts.c"
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printEltsX.c"
             ex="false"
             tool="0"
             flavor2="0">
@@ -130,7 +130,7 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printElts.c"
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printEltsX.c"
             ex="false"
             tool="0"
             flavor2="0">

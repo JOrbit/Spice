@@ -6,6 +6,7 @@
 
 #include "r2d.h"
 
-SpiceDouble r2d(SpiceDouble rad) {
-   return (rad * 360.0 / (2.0 * PI));
+ConstSpiceDouble r2d(SpiceDouble rad) {
+   SpiceDouble deg = rad * 360.0 / (2.0 * PI);
+   return deg;
 }

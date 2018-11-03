@@ -23,7 +23,7 @@ extern "C" {
 static ConstSpiceDouble PI = 3.14159265359;
 
 
-SpiceDouble r2d(SpiceDouble rad);
+ConstSpiceDouble r2d(SpiceDouble rad);
 
 
 
