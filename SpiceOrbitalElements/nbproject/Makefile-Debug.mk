@@ -40,7 +40,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/16a1d3b5/printState.o \
 	${OBJECTDIR}/_ext/16a1d3b5/printStateDiff.o \
 	${OBJECTDIR}/_ext/16a1d3b5/r2d.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/main_1.o
 
 
 # C Compiler Flags
@@ -100,6 +101,11 @@ ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -I/cygdrive/D/naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/main_1.o: main_1.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -I/cygdrive/D/naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_1.o main_1.c
 
 # Subprojects
 .build-subprojects:
