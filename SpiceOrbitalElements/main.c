@@ -58,7 +58,8 @@ int main(int argc, char** argv) {
    ConstSpiceChar* lskFile = "D:/naif/Kernels/Generic/lsk/naif0011.tls";
    ConstSpiceChar* spkFile1 = "D:/naif/Kernels/Generic/spk/planets/de431_part-1.bsp";
    ConstSpiceChar* spkFile2 = "D:/naif/Kernels/Generic/spk/planets/de431_part-2.bsp";
-   ConstSpiceChar* pckFile = "D:/naif/Kernels/Generic/pck/gm_de431.tpc";
+   ConstSpiceChar* pckFile1 = "D:/naif/Kernels/Generic/pck/gm_de431.tpc";
+   ConstSpiceChar* pckFile2 = "D:/naif/Kernels/Generic/pck/pck00010.tpc";
 
    SpiceInt igm;
    SpiceDouble gm;
@@ -80,7 +81,8 @@ int main(int argc, char** argv) {
    furnsh_c(lskFile);
    furnsh_c(spkFile1);
    furnsh_c(spkFile2);
-   furnsh_c(pckFile);
+   furnsh_c(pckFile1);
+   furnsh_c(pckFile2);
 
    /*
       retrieve GM for SUN 
@@ -93,11 +95,13 @@ int main(int argc, char** argv) {
 
    double state[NSTATES];
    double lt;
+   
+   SpiceDouble longitude;
 
    str2et_c("2018 JAN 01 12:00:00", &et1);
 
    printf("Target %s State Variables %s Reference Frame.\n", target, frame);
-   printf("UTC                        Z(km)\n");
+   printf("UTC                        Z(km), Long(deg) \n");
 
    for (int i = 0; i < 366; i++) {
 
@@ -107,7 +111,10 @@ int main(int argc, char** argv) {
 
       et2utc_c(et1, "C", 3, 23, utc);
 
-      printf("%s                        %20.2f\n", utc, state[2]);
+      longitude = dpr_c() * lspcn_c("EARTH", et1, "NONE");
+
+      printf("%s                        %20.2f, %5.2f\n", utc, state[2], longitude);
+
 
       if (i > 0) {
 
@@ -119,8 +126,9 @@ int main(int argc, char** argv) {
                     state, &lt);
 
             et2utc_c(minEt, "C", 3, 23, utc);
+            longitude = dpr_c() * lspcn_c("EARTH", et1, "NONE");
             printf("Minimum Z(km) date and value.\n");
-            printf("%s         %20.2f\n", utc, state[2]);
+            printf("%s                        %20.2f, %5.2f\n", utc, state[2], longitude);
 
          }
 
