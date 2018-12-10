@@ -17,8 +17,9 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>main.c</itemPath>
+      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/main.c</itemPath>
       <itemPath>main_1.c</itemPath>
+      <itemPath>main_2.c</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printEltsX.c</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printEt.c</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printState.c</itemPath>
@@ -58,6 +59,11 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
       <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printEltsX.c"
             ex="false"
             tool="0"
@@ -108,9 +114,9 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="main.c" ex="false" tool="0" flavor2="0">
-      </item>
       <item path="main_1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="main_2.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -133,6 +139,11 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
       <item path="D:/JOrbit/Spice/SpiceOrbitalElements/printEltsX.c"
             ex="false"
             tool="0"
@@ -183,9 +194,9 @@
             tool="3"
             flavor2="0">
       </item>
-      <item path="main.c" ex="false" tool="0" flavor2="0">
-      </item>
       <item path="main_1.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="main_2.c" ex="false" tool="0" flavor2="0">
       </item>
     </conf>
   </confs>

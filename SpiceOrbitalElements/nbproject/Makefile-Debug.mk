@@ -35,13 +35,14 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/16a1d3b5/main.o \
 	${OBJECTDIR}/_ext/16a1d3b5/printEltsX.o \
 	${OBJECTDIR}/_ext/16a1d3b5/printEt.o \
 	${OBJECTDIR}/_ext/16a1d3b5/printState.o \
 	${OBJECTDIR}/_ext/16a1d3b5/printStateDiff.o \
 	${OBJECTDIR}/_ext/16a1d3b5/r2d.o \
-	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/main_1.o
+	${OBJECTDIR}/main_1.o \
+	${OBJECTDIR}/main_2.o
 
 
 # C Compiler Flags
@@ -72,6 +73,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spiceorbitalelements.exe: ${OBJECTFIL
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spiceorbitalelements ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/_ext/16a1d3b5/main.o: /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/main.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/16a1d3b5
+	${RM} "$@.d"
+	$(COMPILE.c) -g -I/cygdrive/D/naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/16a1d3b5/main.o /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/main.c
+
 ${OBJECTDIR}/_ext/16a1d3b5/printEltsX.o: /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/printEltsX.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/16a1d3b5
 	${RM} "$@.d"
@@ -97,15 +103,15 @@ ${OBJECTDIR}/_ext/16a1d3b5/r2d.o: /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/
 	${RM} "$@.d"
 	$(COMPILE.c) -g -I/cygdrive/D/naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/16a1d3b5/r2d.o /cygdrive/D/JOrbit/Spice/SpiceOrbitalElements/r2d.c
 
-${OBJECTDIR}/main.o: main.c 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -g -I/cygdrive/D/naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
-
 ${OBJECTDIR}/main_1.o: main_1.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -I/cygdrive/D/naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_1.o main_1.c
+
+${OBJECTDIR}/main_2.o: main_2.c 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -I/cygdrive/D/naif/PCCYGWINgCC64bit/cspice/include -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main_2.o main_2.c
 
 # Subprojects
 .build-subprojects:

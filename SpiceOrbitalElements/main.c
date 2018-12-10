@@ -17,18 +17,20 @@
 #include <math.h>
 
 #include "SpiceUsr.h"
+#include "SpiceZmc.h"
 
 #include "printEt.h"
 #include "printState.h"
 #include "printEltsX.h"
 #include "printStateDiff.h"
 
+SpiceDouble calcMeanAnomaly(SpiceDouble radsPerPeriod, SpiceDouble epoch
+        , SpiceDouble emar, SpiceDouble et);
+
+SpiceDouble calcTrueAnomaly(SpiceDouble eccentricity, SpiceDouble meanAnomaly);
 
 
 #define GM "GM"
-
-SpiceDouble findMinEt(ConstSpiceChar* target, ConstSpiceChar* frame, ConstSpiceChar* observer,
-        SpiceDouble et1, SpiceDouble et2);
 
 /*
  * 
@@ -47,7 +49,7 @@ int main(int argc, char** argv) {
       strcpy(target, argv[3]);
    } else {
       strcpy(observer, "SUN");
-      strcpy(frame, "ECLIPJ2000"); //"ECLIPJ2000"; //"J2000";
+      strcpy(frame, "J2000"); //"ECLIPJ2000"; //"J2000";
       strcpy(target, "EARTH");
    }
 
@@ -64,17 +66,16 @@ int main(int argc, char** argv) {
    SpiceInt igm;
    SpiceDouble gm;
 
-   SpiceDouble et1;
-   SpiceDouble z1;
-   SpiceDouble et2;
-   SpiceDouble z2;
-
    SpiceChar utc[23];
 
+   SpiceDouble state[NSTATES];
+   SpiceDouble lt;
+
+   SpiceDouble elts[SPICE_OSCLTX_NELTS];
 
 
    /*
-      load kernels: LSK, Solar system SPK, and gravity PCK 
+       load kernels: LSK, Solar system SPK, and gravity PCK 
     */
    printf("Load data.\n");
 
@@ -89,117 +90,55 @@ int main(int argc, char** argv) {
     */
    bodvrd_c(observer, GM, 1, &igm, &gm);
 
-   /*
-      convert UTC to ET 
-    */
-
-   double state[NSTATES];
-   double lt;
-   
-   SpiceDouble longitude;
-
-   str2et_c("2018 JAN 01 12:00:00", &et1);
-
    printf("Target %s State Variables %s Reference Frame.\n", target, frame);
-   printf("UTC                        Z(km), Long(deg) \n");
 
+   spkezr_c(target, J2000, frame, "NONE", observer, state, &lt);
+   printState(J2000, target, frame, observer, state);
+   oscltx_c(state, J2000, gm, elts);
+   printEltsX(J2000, target, frame, observer, elts);
+
+   SpiceDouble P = elts[10];
+   SpiceDouble emar = elts[5];
+   SpiceDouble eecc = elts[1];
+
+   SpiceDouble radsPerPeriod = M_TWOPI / P;
+   printf("radsPerPeriod = %20.10f\n", radsPerPeriod);
+   SpiceDouble et = J2000 + spd_c();
    for (int i = 0; i < 366; i++) {
+      printf("UTC                    mar               cmar                 diff\n");
+      SpiceDouble cmar = calcMeanAnomaly(radsPerPeriod, J2000, emar, et);
+      spkezr_c(target, et, frame, "NONE", observer, state, &lt);
+      //   printState(J2000, target, frame, observer, state);
+      oscltx_c(state, et, gm, elts);
+      //   printEltsX(J2000, target, frame, observer, elts);
+      SpiceDouble mar = elts[5];
+      SpiceDouble ta = elts[8];
+      et2utc_c(et, "C", 3, 23, utc);
+      printf("%s %20.10f %20.10f %20.10f\n", utc, mar, cmar, (cmar - mar));
+      SpiceDouble cta = calcTrueAnomaly(eecc, cmar);
+      printf("%s %20.10f %20.10f %20.10f\n", utc, ta, cta, (cta - ta));
 
-      spkezr_c(target, et1, frame, "NONE", observer,
-              state, &lt);
-      z1 = state[2];
-
-      et2utc_c(et1, "C", 3, 23, utc);
-
-      longitude = dpr_c() * lspcn_c("EARTH", et1, "NONE");
-
-      printf("%s                        %20.2f, %5.2f\n", utc, state[2], longitude);
-
-
-      if (i > 0) {
-
-         if ((fabs(z1) + fabs(z2)) > fabs(z1 + z2)) {
-
-            SpiceDouble minEt = findMinEt(target, frame, observer, et1, et2);
-
-            spkezr_c(target, minEt, frame, "NONE", observer,
-                    state, &lt);
-
-            et2utc_c(minEt, "C", 3, 23, utc);
-            longitude = dpr_c() * lspcn_c("EARTH", et1, "NONE");
-            printf("Minimum Z(km) date and value.\n");
-            printf("%s                        %20.2f, %5.2f\n", utc, state[2], longitude);
-
-         }
-
-
-         et2 = et1;
-         z2 = z1;
-         et1 = et1 + spd_c();
-
-      }
+      et += spd_c();
    }
 
-   return (EXIT_SUCCESS);
 }
 
-SpiceDouble findMinEt(ConstSpiceChar* target, ConstSpiceChar* frame, ConstSpiceChar* observer,
-        SpiceDouble et1, SpiceDouble et2) {
-   SpiceDouble minEt = (et1 + et2) / 2.0;
-   SpiceDouble diff = 1.0;
-
-
-   while (diff > 0.001) {
-
-      SpiceDouble z1;
-      SpiceDouble state1[NSTATES];
-      SpiceDouble minZ;
-      SpiceDouble minState[NSTATES];
-      SpiceDouble z2;
-      SpiceDouble state2[NSTATES];
-      SpiceDouble lt;
-
-      minEt = (et1 + et2) / 2.0;
-
-      spkezr_c(target, et1, frame, "NONE", observer,
-              state1, &lt);
-      z1 = state1[2];
-
-      spkezr_c(target, minEt, frame, "NONE", observer,
-              minState, &lt);
-      minZ = minState[2];
-
-      spkezr_c(target, et2, frame, "NONE", observer,
-              state2, &lt);
-      z2 = state2[2];
-
-      if (z1 > 0 && z2 < 0) {
-         if (minZ < 0) {
-            et2 = minEt;
-         } else {
-            et1 = minEt;
-         }
-      } else if (z1 < 0 && z2 > 0) {
-         if (minZ < 0) {
-            et1 = minEt;
-         } else {
-            et2 = minEt;
-         }
-      } else {
-         printf("SEVERE ERROR: z1 and z2 are the same sign.\n");
-         exit(-1);
-      }
-
-      diff = fabs(minZ);
-
-      /* FOR DEBUGGING
-      printf("END DO LOOP: \n");
-      printf("z1, minZ, z2 = %10.2f, %10.2f, %10.2f\n", z1, minZ, z2);
-      printf("et1, minEt, et2 = %10.2f, %10.2f, %10.2f\n", et1, minEt, et2);
-      printf("diff = %10.5f\n", diff);
-       */
-   }
-
-   return minEt;
+SpiceDouble calcMeanAnomaly(SpiceDouble radsPerPeriod, SpiceDouble epoch
+        , SpiceDouble emar, SpiceDouble et) {
+   SpiceDouble cmar = 0;
+   cmar = (radsPerPeriod * (et - epoch)) + emar;
+   return cmar;
 }
 
+SpiceDouble calcTrueAnomaly(SpiceDouble eccentricity, SpiceDouble meanAnomaly) {
+   SpiceDouble cta = 0;
+   SpiceDouble e = eccentricity;
+   SpiceDouble M = meanAnomaly;
+
+   cta = M;
+   cta += ((2 * e - (0.25 * e * e * e)) * sin(M));
+   cta += ((1.25 * e * e * sin(2.0 * M)));
+   cta += ((13.0 * e * e * e * sin(3.0 * M)) / 12.0);
+
+   return cta;
+}
