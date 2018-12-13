@@ -104,7 +104,7 @@ int main(int argc, char** argv) {
    SpiceDouble radsPerPeriod = M_TWOPI / P;
    printf("radsPerPeriod = %20.10f\n", radsPerPeriod);
    SpiceDouble et = J2000 + spd_c();
-   for (int i = 0; i < 366; i++) {
+   for (int i = 0; i < 3660; i++) {
       printf("UTC                    mar               cmar                 diff\n");
       SpiceDouble cmar = calcMeanAnomaly(radsPerPeriod, J2000, emar, et);
       spkezr_c(target, et, frame, "NONE", observer, state, &lt);
@@ -127,6 +127,10 @@ SpiceDouble calcMeanAnomaly(SpiceDouble radsPerPeriod, SpiceDouble epoch
         , SpiceDouble emar, SpiceDouble et) {
    SpiceDouble cmar = 0;
    cmar = (radsPerPeriod * (et - epoch)) + emar;
+   if (cmar > M_TWOPI) {
+      int imult = cmar /  M_TWOPI;
+      cmar -= (imult * M_TWOPI);
+   }
    return cmar;
 }
 
