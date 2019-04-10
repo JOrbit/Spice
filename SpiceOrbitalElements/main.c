@@ -19,16 +19,7 @@
 #include "SpiceUsr.h"
 #include "SpiceZmc.h"
 
-#include "printEt.h"
 #include "printState.h"
-#include "printEltsX.h"
-#include "printStateDiff.h"
-
-SpiceDouble calcMeanAnomaly(SpiceDouble radsPerPeriod, SpiceDouble epoch
-        , SpiceDouble emar, SpiceDouble et);
-
-SpiceDouble calcTrueAnomaly(SpiceDouble eccentricity, SpiceDouble meanAnomaly);
-
 
 #define GM "GM"
 
@@ -68,11 +59,13 @@ int main(int argc, char** argv) {
 
    SpiceChar utc[23];
 
-   SpiceDouble state[NSTATES];
    SpiceDouble lt;
 
-   SpiceDouble elts[SPICE_OSCLTX_NELTS];
-
+   SpiceDouble state[NSTATES];
+   
+   SpiceDouble AU2KM = 149597870.691;
+   SpiceDouble KM2AU = 1.0/AU2KM;
+   
 
    /*
        load kernels: LSK, Solar system SPK, and gravity PCK 
@@ -92,57 +85,30 @@ int main(int argc, char** argv) {
 
    printf("Target %s State Variables %s Reference Frame.\n", target, frame);
 
-   spkezr_c(target, J2000, frame, "NONE", observer, state, &lt);
-   printState(J2000, target, frame, observer, state);
-   oscltx_c(state, J2000, gm, elts);
-   printEltsX(J2000, target, frame, observer, elts);
-
-   SpiceDouble P = elts[10];
-   SpiceDouble emar = elts[5];
-   SpiceDouble eecc = elts[1];
-
-   SpiceDouble radsPerPeriod = M_TWOPI / P;
-   printf("radsPerPeriod = %20.10f\n", radsPerPeriod);
-   SpiceDouble et = J2000 + spd_c();
-   for (int i = 0; i < 3660; i++) {
-      printf("UTC                    mar               cmar                 diff\n");
-      SpiceDouble cmar = calcMeanAnomaly(radsPerPeriod, J2000, emar, et);
-      spkezr_c(target, et, frame, "NONE", observer, state, &lt);
-      //   printState(J2000, target, frame, observer, state);
-      oscltx_c(state, et, gm, elts);
-      //   printEltsX(J2000, target, frame, observer, elts);
-      SpiceDouble mar = elts[5];
-      SpiceDouble ta = elts[8];
-      et2utc_c(et, "C", 3, 23, utc);
-      printf("%s %20.10f %20.10f %20.10f\n", utc, mar, cmar, (cmar - mar));
-      SpiceDouble cta = calcTrueAnomaly(eecc, cmar);
-      printf("%s %20.10f %20.10f %20.10f\n", utc, ta, cta, (cta - ta));
-
+   SpiceDouble et = j2000_c();
+   printf("j2000_c() = %f\n", et);
+   utc2et_c("2000-01-01T12:00:00", &et);
+   printf("et = %f\n", et);
+   printf("spd_c() = %f\n", spd_c());
+   spkezr_c(target, et, frame, "NONE", observer, state, &lt);
+   printState(et, target, frame, observer, state);
+   et2utc_c(et, "C", 3, 23, utc);
+   SpiceDouble radius = 0;
+   printf("UTC                          X(AU)                     Y(AU)                  Z(AU)              R{AU)\n");
+   for (int i = 0; i < 1000; i++) {
+      radius = sqrt(state[0] * state[0] +
+              state[1] * state[1] + 
+              state[2] * state[2]);
+      printf("%s %20.10f %20.10f %20.10f %20.10f\n", 
+              utc, 
+              state[0] * KM2AU, 
+              state[1] * KM2AU, 
+              state[2] * KM2AU,
+              radius * KM2AU);
       et += spd_c();
+
+      spkezr_c(target, et, frame, "NONE", observer, state, &lt);
+      et2utc_c(et, "C", 3, 23, utc);
    }
 
-}
-
-SpiceDouble calcMeanAnomaly(SpiceDouble radsPerPeriod, SpiceDouble epoch
-        , SpiceDouble emar, SpiceDouble et) {
-   SpiceDouble cmar = 0;
-   cmar = (radsPerPeriod * (et - epoch)) + emar;
-   if (cmar > M_TWOPI) {
-      int imult = cmar /  M_TWOPI;
-      cmar -= (imult * M_TWOPI);
-   }
-   return cmar;
-}
-
-SpiceDouble calcTrueAnomaly(SpiceDouble eccentricity, SpiceDouble meanAnomaly) {
-   SpiceDouble cta = 0;
-   SpiceDouble e = eccentricity;
-   SpiceDouble M = meanAnomaly;
-
-   cta = M;
-   cta += ((2 * e - (0.25 * e * e * e)) * sin(M));
-   cta += ((1.25 * e * e * sin(2.0 * M)));
-   cta += ((13.0 * e * e * e * sin(3.0 * M)) / 12.0);
-
-   return cta;
 }

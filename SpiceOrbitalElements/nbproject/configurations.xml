@@ -20,6 +20,7 @@
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/main.c</itemPath>
       <itemPath>main_1.c</itemPath>
       <itemPath>main_2.c</itemPath>
+      <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/main_3.c</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printEltsX.c</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printEt.c</itemPath>
       <itemPath>D:/JOrbit/Spice/SpiceOrbitalElements/printState.c</itemPath>
@@ -60,6 +61,11 @@
         </linkerTool>
       </compileType>
       <item path="D:/JOrbit/Spice/SpiceOrbitalElements/main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/main_3.c"
             ex="false"
             tool="0"
             flavor2="0">
@@ -140,6 +146,11 @@
         </asmTool>
       </compileType>
       <item path="D:/JOrbit/Spice/SpiceOrbitalElements/main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="D:/JOrbit/Spice/SpiceOrbitalElements/main_3.c"
             ex="false"
             tool="0"
             flavor2="0">
