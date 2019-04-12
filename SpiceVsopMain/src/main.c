@@ -63,10 +63,24 @@ int main(int argc, char** argv) {
    SpiceDouble lt;
 
    SpiceDouble state[NSTATES];
-   
+
    SpiceDouble AU2KM = 149597870.691;
-   SpiceDouble KM2AU = 1.0/AU2KM;
-   
+   SpiceDouble KM2AU = 1.0 / AU2KM;
+
+   SpiceChar* fileName = (char *) malloc(sizeof (target) + sizeof (frame) +
+           sizeof (observer) + 64);
+   strcpy(fileName, target);
+   strcat(fileName, frame);
+   strcat(fileName, observer);
+   strcat(fileName, "XyzR.txt");
+   printf("fileName = %s\n", fileName);
+
+   FILE* file = fopen(fileName, "w");
+   if (!file) {
+      printf("SEVERE ERROR: fopen failed for file %s\n", fileName);
+      exit(-1);
+   }
+
 
    /*
        load kernels: LSK, Solar system SPK, and gravity PCK 
@@ -86,29 +100,34 @@ int main(int argc, char** argv) {
 
    printf("Target %s State Variables %s Reference Frame.\n", target, frame);
 
-   SpiceDouble et = j2000_c();
-   printf("j2000_c() = %f\n", et);
+   SpiceDouble et;
+   printf("j2000_c() = %f\n", j2000_c());
    utc2et_c("2000-01-01T12:00:00", &et);
    printf("et = %f\n", et);
    printf("spd_c() = %f\n", spd_c());
-   spkezr_c(target, et, frame, "NONE", observer, state, &lt);
-   et2utc_c(et, "C", 3, 23, utc);
+   
    SpiceDouble radius = 0;
    printf("UTC                          X(AU)                     Y(AU)                  Z(AU)              R{AU)\n");
    for (int i = 0; i < 1000; i++) {
+       spkezr_c(target, et, frame, "NONE", observer, state, &lt);
+      et2utc_c(et, "C", 3, 23, utc);
+     
       radius = sqrt(state[0] * state[0] +
-              state[1] * state[1] + 
+              state[1] * state[1] +
               state[2] * state[2]);
-      printf("%s %20.10f %20.10f %20.10f %20.10f\n", 
-              utc, 
-              state[0] * KM2AU, 
-              state[1] * KM2AU, 
+      printf("%s %20.10f %20.10f %20.10f %20.10f\n",
+              utc,
+              state[0] * KM2AU,
+              state[1] * KM2AU,
               state[2] * KM2AU,
               radius * KM2AU);
-      et += spd_c();
+     fprintf(file, "%20.10f %20.10f %20.10f %20.10f %20.10f\n", 
+              et, state[0], state[1], state[2], radius);
 
-      spkezr_c(target, et, frame, "NONE", observer, state, &lt);
-      et2utc_c(et, "C", 3, 23, utc);
+     et += spd_c();
+      
+      
    }
-
+   
+   fclose(file);
 }
