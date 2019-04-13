@@ -33,17 +33,33 @@ int main(int argc, char** argv) {
    SpiceChar frame[20];
    SpiceChar target[20];
 
-   printf("SpiceOrbitalElements main.c \n");
+   printf("SpiceVsopMain main.c \n");
 
+   /*
    if (argc == 4) {
       strcpy(observer, argv[1]);
       strcpy(frame, argv[2]);
       strcpy(target, argv[3]);
    } else {
       strcpy(observer, "SUN");
-      strcpy(frame, "J2000"); //"ECLIPJ2000"; //"J2000";
+      strcpy(frame, "ECLIPJ2000"); //"J2000";
       strcpy(target, "EARTH");
    }
+    */
+
+   const char* Planets[] = {
+      "MERCURY",
+      "VENUS",
+      "EARTH",
+      "MARS_BARYCENTER",
+      "JUPITER_BARYCENTER",
+      "SATURN_BARYCENTER",
+      "URANUS_BARYCENTER",
+      "NEPTUNE_BARYCENTER"
+   };
+
+   strcpy(observer, "SUN");
+   strcpy(frame, "ECLIPJ2000");
 
    printf("Observer = %s\n", observer);
    printf("Frame    = %s\n", frame);
@@ -67,23 +83,8 @@ int main(int argc, char** argv) {
    SpiceDouble AU2KM = 149597870.691;
    SpiceDouble KM2AU = 1.0 / AU2KM;
 
-   SpiceChar* fileName = (char *) malloc(sizeof (target) + sizeof (frame) +
-           sizeof (observer) + 64);
-   strcpy(fileName, target);
-   strcat(fileName, frame);
-   strcat(fileName, observer);
-   strcat(fileName, "XyzR.txt");
-   printf("fileName = %s\n", fileName);
-
-   FILE* file = fopen(fileName, "w");
-   if (!file) {
-      printf("SEVERE ERROR: fopen failed for file %s\n", fileName);
-      exit(-1);
-   }
-
-
    /*
-       load kernels: LSK, Solar system SPK, and gravity PCK 
+          load kernels: LSK, Solar system SPK, and gravity PCK 
     */
    printf("Load data.\n");
 
@@ -93,41 +94,63 @@ int main(int argc, char** argv) {
    furnsh_c(pckFile1);
    furnsh_c(pckFile2);
 
-   /*
-      retrieve GM for SUN 
-    */
-   bodvrd_c(observer, GM, 1, &igm, &gm);
 
-   printf("Target %s State Variables %s Reference Frame.\n", target, frame);
+   for (int p = 0; p < 8; p++) {
 
-   SpiceDouble et;
-   printf("j2000_c() = %f\n", j2000_c());
-   utc2et_c("2000-01-01T12:00:00", &et);
-   printf("et = %f\n", et);
-   printf("spd_c() = %f\n", spd_c());
-   
-   SpiceDouble radius = 0;
-   printf("UTC                          X(AU)                     Y(AU)                  Z(AU)              R{AU)\n");
-   for (int i = 0; i < 1000; i++) {
-       spkezr_c(target, et, frame, "NONE", observer, state, &lt);
-      et2utc_c(et, "C", 3, 23, utc);
-     
-      radius = sqrt(state[0] * state[0] +
-              state[1] * state[1] +
-              state[2] * state[2]);
-      printf("%s %20.10f %20.10f %20.10f %20.10f\n",
-              utc,
-              state[0] * KM2AU,
-              state[1] * KM2AU,
-              state[2] * KM2AU,
-              radius * KM2AU);
-     fprintf(file, "%20.10f %20.10f %20.10f %20.10f %20.10f\n", 
-              et, state[0], state[1], state[2], radius);
+      strcpy(target, Planets[p]);
+      SpiceChar* fileName = (char *) malloc(sizeof (target) + sizeof (frame) +
+              sizeof (observer) + 64);
+      strcpy(fileName, target);
+      strcat(fileName, "-");
+      strcat(fileName, frame);
+      strcat(fileName, "-");
+      strcat(fileName, observer);
+      strcat(fileName, "-");
+      strcat(fileName, "XyzR.txt");
+      printf("fileName = %s\n", fileName);
 
-     et += spd_c();
-      
-      
+      FILE* file = fopen(fileName, "w");
+      if (!file) {
+         printf("SEVERE ERROR: fopen failed for file %s\n", fileName);
+         exit(-1);
+      }
+      /*
+         retrieve GM for SUN 
+       */
+      bodvrd_c(observer, GM, 1, &igm, &gm);
+
+      printf("Target %s State Variables %s Reference Frame.\n", target, frame);
+
+      SpiceDouble et;
+      printf("j2000_c() = %f\n", j2000_c());
+      utc2et_c("2000-01-01T12:00:00", &et);
+      printf("et = %f\n", et);
+      printf("spd_c() = %f\n", spd_c());
+
+      SpiceDouble radius = 0;
+      printf("UTC                          X(AU)                     Y(AU)                  Z(AU)              R{AU)\n");
+      for (int i = 0; i < 1000; i++) {
+         spkezr_c(target, et, frame, "NONE", observer, state, &lt);
+         et2utc_c(et, "C", 3, 23, utc);
+
+         radius = sqrt(state[0] * state[0] +
+                 state[1] * state[1] +
+                 state[2] * state[2]);
+         printf("%s %20.10f %20.10f %20.10f %20.10f\n",
+                 utc,
+                 state[0] * KM2AU,
+                 state[1] * KM2AU,
+                 state[2] * KM2AU,
+                 radius * KM2AU);
+         fprintf(file, "%20.10f %20.10f %20.10f %20.10f %20.10f\n",
+                 et, state[0], state[1], state[2], radius);
+
+         et += spd_c();
+
+
+      }
+
+      fclose(file);
+
    }
-   
-   fclose(file);
 }
