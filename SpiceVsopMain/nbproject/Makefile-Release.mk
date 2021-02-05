@@ -62,7 +62,7 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spicevsopmain.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spicevsopmain ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/76b5db03/main.o: /cygdrive/D/JOrbit/Spice/SpiceVsopMain/src/main.c 
+${OBJECTDIR}/_ext/76b5db03/main.o: /cygdrive/D/JOrbit/Spice/SpiceVsopMain/src/main.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/76b5db03
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/76b5db03/main.o /cygdrive/D/JOrbit/Spice/SpiceVsopMain/src/main.c
@@ -73,7 +73,6 @@ ${OBJECTDIR}/_ext/76b5db03/main.o: /cygdrive/D/JOrbit/Spice/SpiceVsopMain/src/ma
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/spicevsopmain.exe
 
 # Subprojects
 .clean-subprojects:
